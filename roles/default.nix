@@ -1,6 +1,5 @@
 {
   imports = [
-    ./roles
-    ./site
+    ./laptop.nix
   ];
 }
