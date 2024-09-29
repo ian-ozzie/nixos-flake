@@ -124,6 +124,8 @@ OUTPUTS=$(nix build $BUILDS --json | jq -r '.[].outputs.out')
 if [[ -n $OUTPUTS ]] && [[ -n $NCPS_URL ]]; then
     nix copy --to "${NCPS_URL}" $OUTPUTS
 fi
+
+nix build .#isoConfigurations.installer-minimal.config.system.build.toplevel
 ```
 
 ### try
@@ -169,6 +171,18 @@ Show system generations
 
 ```bash
 nixos-rebuild list-generations
+```
+
+### iso
+
+Create installation ISO, or download from https://github.com/nix-community/nixos-images/releases
+
+Inputs: CONFIG
+Environment: CONFIG=installer-minimal
+
+```bash
+nom build .#isoConfigurations.${CONFIG}.config.system.build.isoImage
+xc notify "nix: iso" "created $CONFIG"
 ```
 
 ### notify

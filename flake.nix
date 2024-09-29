@@ -45,6 +45,15 @@
         };
       };
 
+      isoConfigurations = ozzie-lab.lib.genNixOSHosts {
+        inherit
+          coreModules
+          inputs
+          ;
+
+        directory = "${inputs.self}/isos";
+      };
+
       nixosModules = {
         site = import ./.;
         users = import ./users;
