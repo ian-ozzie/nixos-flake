@@ -1,0 +1,23 @@
+{
+  pkgs,
+  ...
+}:
+{
+  environment.systemPackages = with pkgs; [
+    bind.dnsutils
+    curl
+    git
+    htop
+    inetutils
+    lsof
+    man
+    nixfmt-rfc-style
+    pre-commit
+    rsync
+    screen
+    strace
+    vim
+    wget
+    xc
+  ];
+}
