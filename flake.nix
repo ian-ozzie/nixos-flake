@@ -2,6 +2,7 @@
   description = "Ozzie's NixOS flake";
 
   inputs = {
+    nixos-hardware.url = "github:nixos/nixos-hardware";
     nixpkgs.url = "github:nixos/nixpkgs/nixos-24.05";
 
     ozzie-lab = {
@@ -20,10 +21,33 @@
     };
   };
 
-  outputs = _: {
-    nixosModules = {
-      site = import ./.;
-      users = import ./users;
+  outputs =
+    inputs@{
+      ozzie-lab,
+      self,
+      ...
+    }:
+    let
+      coreModules = [
+        ozzie-lab.nixosModules.default
+        self.nixosModules.site
+      ];
+    in
+    {
+      nixosConfigurations = ozzie-lab.lib.genNixOSHosts {
+        inherit
+          coreModules
+          inputs
+          ;
+
+        specialArgs = {
+          inherit inputs;
+        };
+      };
+
+      nixosModules = {
+        site = import ./.;
+        users = import ./users;
+      };
     };
-  };
 }

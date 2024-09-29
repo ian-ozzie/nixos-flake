@@ -13,6 +13,23 @@ in
   };
 
   config = lib.mkIf cfg.enable {
+    boot = {
+      extraModulePackages = [ ];
+      kernelModules = [ "kvm-amd" ];
+
+      initrd = {
+        kernelModules = [ ];
+
+        availableKernelModules = [
+          "nvme"
+          "sd_mod"
+          "thunderbolt"
+          "usb_storage"
+          "xhci_pci"
+        ];
+      };
+    };
+
     environment.systemPackages = with pkgs; [
       clinfo
       glxinfo
@@ -26,6 +43,7 @@ in
       bluetooth.enable = true;
       cpu.amd.updateMicrocode = true;
       enableAllFirmware = true;
+      pulseaudio.enable = false;
 
       opengl = {
         driSupport = true;

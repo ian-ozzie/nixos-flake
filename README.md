@@ -8,6 +8,57 @@ Systems are set up using a modified [genNixOSHosts](https://github.com/arnarg/co
 
 ## Tasks
 
+### build
+
+Only build by default, noop/repl/test/switch/boot with argument
+
+Inputs: COMMAND, CONFIG
+Environment: COMMAND=build, CONFIG=
+
+```bash
+ARGS=""
+if [[ $COMMAND = "noop" || $COMMAND = "dry-activate" ]]; then
+    xc notify "nix: dev build" "completed build, prompting for password"
+    nixos-rebuild --sudo dry-activate --flake .#$CONFIG $ARGS
+elif [[ $COMMAND = "noop-build" || $COMMAND = "dry-build" ]]; then
+    nixos-rebuild --sudo dry-build --flake .#$CONFIG $ARGS
+elif [[ $COMMAND = "repl" ]]; then
+    nixos-rebuild repl --flake .#$CONFIG $ARGS
+else
+    nh os $COMMAND -- $ARGS
+fi
+
+if [[ $COMMAND != "repl" ]]; then
+    xc notify "nix: build" "completed $COMMAND"
+fi
+```
+
+### dev
+
+Override my modules to local paths
+
+Only build by default, noop/repl/test/switch/boot with argument
+
+Inputs: COMMAND, CONFIG
+Environment: COMMAND=build, CONFIG=
+
+```bash
+ARGS="--no-write-lock-file --option warn-dirty false --override-input ozzie-lab ../lab --override-input ozzie-secrets ../secrets --override-input ozzie-workstation ../workstation"
+if [[ $COMMAND = "noop" || $COMMAND = "dry-activate" ]]; then
+    nixos-rebuild --sudo dry-activate --flake .#$CONFIG $ARGS
+elif [[ $COMMAND = "noop-build" || $COMMAND = "dry-build" ]]; then
+    nixos-rebuild --sudo dry-build --flake .#$CONFIG $ARGS
+elif [[ $COMMAND = "repl" ]]; then
+    nixos-rebuild repl --flake .#$CONFIG $ARGS
+else
+    nh os $COMMAND -- $ARGS
+fi
+
+if [[ $COMMAND != "repl" ]]; then
+    xc notify "nix: build" "completed $COMMAND"
+fi
+```
+
 ### lock
 
 Lock flake inputs
@@ -53,10 +104,26 @@ nix flake metadata
 
 ### test
 
-Validate flake
+Used to validate flake, builds all known hosts, or provided list
+
+Inputs: HOSTS, NCPS_URL
+Environment: HOSTS=, NCPS_URL=
 
 ```bash
-nix flake check
+if [[ -z "${HOSTS}" ]]; then
+    HOSTS=$(nix flake show --json | jq -r '. | select(.nixosConfigurations != null) | .nixosConfigurations | keys[]')
+fi
+
+BUILDS=
+for host in $HOSTS; do
+    BUILDS+=".#nixosConfigurations.${host}.config.system.build.toplevel "
+done
+
+OUTPUTS=$(nix build $BUILDS --json | jq -r '.[].outputs.out')
+
+if [[ -n $OUTPUTS ]] && [[ -n $NCPS_URL ]]; then
+    nix copy --to "${NCPS_URL}" $OUTPUTS
+fi
 ```
 
 ### try
@@ -94,6 +161,14 @@ elif [[ -d "$PWD/../$MODULE" ]]; then
 else
     echo Module not found: $(realpath $PWD/../$MODULE)
 fi
+```
+
+### generations
+
+Show system generations
+
+```bash
+nixos-rebuild list-generations
 ```
 
 ### notify
