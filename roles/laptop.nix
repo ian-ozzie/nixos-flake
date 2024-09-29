@@ -12,7 +12,6 @@ in
   };
 
   config = lib.mkIf cfg.enable {
-    ozzie.workstation.enable = true;
-    users.users.ozzie.extraGroups = [ "networkmanager" ];
+    site.roles.gui.enable = true;
   };
 }
