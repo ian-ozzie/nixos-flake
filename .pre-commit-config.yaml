@@ -1,0 +1,23 @@
+repos:
+  - repo: https://github.com/NixOS/nixfmt
+    rev: v1.0.1
+    hooks:
+      - id: nixfmt-nix
+
+  - repo: local
+    hooks:
+      - id: deadnix
+        name: deadnix
+        entry: bash -c 'deadnix'
+        language: system
+        types:
+          - nix
+
+  - repo: local
+    hooks:
+      - id: check-flake
+        name: check-flake
+        entry: bash -c 'xc check'
+        language: system
+        types:
+          - nix

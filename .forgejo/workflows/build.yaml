@@ -1,0 +1,7 @@
+on: [push]
+jobs:
+  test:
+    runs-on: nix-amd64
+    steps:
+      - uses: actions/checkout@v4
+      - run: xc test

@@ -1,0 +1,90 @@
+{
+  "nodes": {
+    "nixpkgs": {
+      "locked": {
+        "lastModified": 1726838390,
+        "narHash": "sha256-NmcVhGElxDbmEWzgXsyAjlRhUus/nEqPC5So7BOJLUM=",
+        "owner": "nixos",
+        "repo": "nixpkgs",
+        "rev": "944b2aea7f0a2d7c79f72468106bc5510cbf5101",
+        "type": "github"
+      },
+      "original": {
+        "owner": "nixos",
+        "ref": "nixos-24.05",
+        "repo": "nixpkgs",
+        "type": "github"
+      }
+    },
+    "ozzie-lab": {
+      "inputs": {
+        "nixpkgs": [
+          "nixpkgs"
+        ]
+      },
+      "locked": {
+        "lastModified": 1727594381,
+        "narHash": "sha256-CpmTflxGyLZ4wgd9NMv41+X2uGSjv+a+yrE6FNU7DD8=",
+        "ref": "refs/heads/main",
+        "rev": "a32173b38d874506be13c420537989f47f458a22",
+        "revCount": 10,
+        "type": "git",
+        "url": "ssh://git/ozzie/nixos-lab.git"
+      },
+      "original": {
+        "type": "git",
+        "url": "ssh://git/ozzie/nixos-lab.git"
+      }
+    },
+    "ozzie-secrets": {
+      "inputs": {
+        "nixpkgs": [
+          "nixpkgs"
+        ]
+      },
+      "locked": {
+        "lastModified": 1727594381,
+        "narHash": "sha256-9dh8QN6HobWmca39zG+lnpYFJnhKRkk7xJvtWiWY+uk=",
+        "ref": "refs/heads/main",
+        "rev": "df5c5036497a923fae5d601ba2ccc781d84e79a7",
+        "revCount": 1,
+        "type": "git",
+        "url": "ssh://git/ozzie/nixos-secrets.git"
+      },
+      "original": {
+        "type": "git",
+        "url": "ssh://git/ozzie/nixos-secrets.git"
+      }
+    },
+    "ozzie-workstation": {
+      "inputs": {
+        "nixpkgs": [
+          "nixpkgs"
+        ]
+      },
+      "locked": {
+        "lastModified": 1727594381,
+        "narHash": "sha256-NZq6EwX+k2ecYfHOi5SZjS1uooRJkIIhpnq+Q9U/9Co=",
+        "ref": "refs/heads/main",
+        "rev": "2747bb2d6318ac0f264bfab5a6a29490c17cef3b",
+        "revCount": 1,
+        "type": "git",
+        "url": "ssh://git/ozzie/nix-workstation.git"
+      },
+      "original": {
+        "type": "git",
+        "url": "ssh://git/ozzie/nix-workstation.git"
+      }
+    },
+    "root": {
+      "inputs": {
+        "nixpkgs": "nixpkgs",
+        "ozzie-lab": "ozzie-lab",
+        "ozzie-secrets": "ozzie-secrets",
+        "ozzie-workstation": "ozzie-workstation"
+      }
+    }
+  },
+  "root": "root",
+  "version": 7
+}
