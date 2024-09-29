@@ -1,0 +1,3 @@
+{
+  ozzie = import ./ozzie.nix;
+}

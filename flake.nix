@@ -23,6 +23,7 @@
   outputs = _: {
     nixosModules = {
       site = import ./.;
+      users = import ./users;
     };
   };
 }
