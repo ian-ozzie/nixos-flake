@@ -37,7 +37,8 @@
             }: {
               imports = [
                 (modulesPath + "/installer/cd-dvd/installation-cd-minimal.nix")
-                images/installer.nix
+
+                images/installer-minimal.nix
               ];
             }
           )
