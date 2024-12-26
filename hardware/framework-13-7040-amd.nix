@@ -40,14 +40,13 @@ in
     ];
 
     hardware = {
+      amdgpu.amdvlk.enable = true;
       bluetooth.enable = true;
       cpu.amd.updateMicrocode = true;
       enableAllFirmware = true;
       pulseaudio.enable = false;
 
-      opengl = {
-        driSupport = true;
-        driSupport32Bit = true;
+      graphics = {
         extraPackages = with pkgs; [ amdvlk ];
         extraPackages32 = with pkgs; [ driversi686Linux.amdvlk ];
       };

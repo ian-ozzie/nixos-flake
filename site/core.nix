@@ -28,11 +28,14 @@
   };
 
   programs = {
-    vim.defaultEditor = true;
-
     nh = {
       enable = true;
       flake = "/data/nixos/flake";
+    };
+
+    vim = {
+      enable = true;
+      defaultEditor = true;
     };
   };
 

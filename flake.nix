@@ -3,7 +3,7 @@
 
   inputs = {
     nixos-hardware.url = "github:nixos/nixos-hardware";
-    nixpkgs.url = "github:nixos/nixpkgs/nixos-24.05";
+    nixpkgs.url = "github:nixos/nixpkgs/nixos-24.11";
 
     ozzie-lab = {
       inputs.nixpkgs.follows = "nixpkgs";
