@@ -25,6 +25,7 @@
 
   ozzie = {
     lab = {
+      acme.enable = true;
       adguardhome.enable = true;
       traefik.enable = true;
     };
