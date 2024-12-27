@@ -16,6 +16,7 @@ in
     boot = {
       extraModulePackages = [ ];
       kernelModules = [ "kvm-amd" ];
+      kernelPackages = with pkgs; linuxPackages_latest;
 
       initrd = {
         kernelModules = [ ];
@@ -44,12 +45,6 @@ in
       bluetooth.enable = true;
       cpu.amd.updateMicrocode = true;
       enableAllFirmware = true;
-      pulseaudio.enable = false;
-
-      graphics = {
-        extraPackages = with pkgs; [ amdvlk ];
-        extraPackages32 = with pkgs; [ driversi686Linux.amdvlk ];
-      };
     };
 
     networking.networkmanager = {
@@ -57,11 +52,15 @@ in
       enable = true;
     };
 
-    services.pipewire = {
-      alsa.enable = true;
-      enable = true;
-      jack.enable = true;
-      pulse.enable = true;
+    services = {
+      fwupd.enable = true;
+
+      pipewire = {
+        alsa.enable = true;
+        enable = true;
+        jack.enable = true;
+        pulse.enable = true;
+      };
     };
   };
 }
