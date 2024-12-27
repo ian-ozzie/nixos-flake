@@ -15,7 +15,7 @@
     ozzie-secrets.nixosModules.site
     ozzie-secrets.nixosModules.hosts.legolas
 
-    ozzie-workstation.nixosModules.gnome
+    ozzie-workstation.nixosModules.hyprland
     self.nixosModules.users.ozzie
 
     ./configuration.nix
