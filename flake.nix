@@ -54,6 +54,15 @@
         directory = "${inputs.self}/isos";
       };
 
+      deprecatedConfigurations = ozzie-lab.lib.genNixOSHosts {
+        inherit
+          coreModules
+          inputs
+          ;
+
+        directory = "${inputs.self}/deprecated";
+      };
+
       nixosModules = {
         site = import ./.;
         users = import ./users;

@@ -126,6 +126,7 @@ if [[ -n $OUTPUTS ]] && [[ -n $NCPS_URL ]]; then
 fi
 
 nix build .#isoConfigurations.installer-minimal.config.system.build.toplevel
+nix build .#deprecatedConfigurations.gnome.config.system.build.toplevel
 ```
 
 ### try
