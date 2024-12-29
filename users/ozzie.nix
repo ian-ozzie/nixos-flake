@@ -18,5 +18,11 @@
       "ssh-ed25519 AAAAC3NzaC1lZDI1NTE5AAAAIDOedK/iBJQbrnt28ar65nxcCDc94DFStXVLU6Ph7GNI"
       "ssh-ed25519 AAAAC3NzaC1lZDI1NTE5AAAAIHj2clFHRheJ4zDWUwWXaow9OFAHtHBaDjdFpXVwuXDR"
     ];
+
+    packages = with pkgs; [
+      alejandra
+      deadnix
+      statix
+    ];
   };
 }
