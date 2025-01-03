@@ -13,6 +13,8 @@ in
   };
 
   config = lib.mkIf cfg.enable {
+    security.rtkit.enable = true;
+
     boot = {
       extraModulePackages = [ ];
       kernelModules = [ "kvm-amd" ];
@@ -32,7 +34,9 @@ in
     };
 
     environment.systemPackages = with pkgs; [
+      brightnessctl
       clinfo
+      framework-tool
       glxinfo
       lm_sensors
       nvtopPackages.amd
@@ -53,6 +57,7 @@ in
     };
 
     services = {
+      fprintd.enable = false;
       fwupd.enable = true;
 
       pipewire = {
