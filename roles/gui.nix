@@ -12,6 +12,10 @@ in
   };
 
   config = lib.mkIf cfg.enable {
+    programs = {
+      ssh.startAgent = true;
+    };
+
     users.users = {
       ozzie.extraGroups = [ "networkmanager" ];
     };
