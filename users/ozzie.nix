@@ -22,7 +22,10 @@
     packages = with pkgs; [
       alejandra
       deadnix
+      killall
+      nix-search
       statix
+      unzip
     ];
   };
 }
