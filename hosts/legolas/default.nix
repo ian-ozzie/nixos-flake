@@ -6,6 +6,7 @@
   ...
 }:
 {
+  home = true;
   system = "x86_64-linux";
 
   modules = [
@@ -16,7 +17,10 @@
     ozzie-secrets.nixosModules.hosts.legolas
 
     ozzie-workstation.nixosModules.hyprland
+
+    self.nixosModules.home
     self.nixosModules.users.ozzie
+    self.nixosModules.users.ozzieHome
 
     ./configuration.nix
   ];

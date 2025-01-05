@@ -1,5 +1,26 @@
 {
   "nodes": {
+    "home-manager": {
+      "inputs": {
+        "nixpkgs": [
+          "nixpkgs"
+        ]
+      },
+      "locked": {
+        "lastModified": 1734366194,
+        "narHash": "sha256-vykpJ1xsdkv0j8WOVXrRFHUAdp9NXHpxdnn1F4pYgSw=",
+        "owner": "nix-community",
+        "repo": "home-manager",
+        "rev": "80b0fdf483c5d1cb75aaad909bd390d48673857f",
+        "type": "github"
+      },
+      "original": {
+        "owner": "nix-community",
+        "ref": "release-24.11",
+        "repo": "home-manager",
+        "type": "github"
+      }
+    },
     "nixos-hardware": {
       "locked": {
         "lastModified": 1734954597,
@@ -38,11 +59,11 @@
         ]
       },
       "locked": {
-        "lastModified": 1735949022,
-        "narHash": "sha256-MorTnNPlMcfCwbHK+mRy9s1tqdJZLpm9je4uIfvuhpo=",
+        "lastModified": 1736040840,
+        "narHash": "sha256-w4TPSPpcddHFD2GpsU4ytyLFvdvO3t1EdfH7zsxOhM4=",
         "ref": "refs/heads/main",
-        "rev": "8bd2ac3c3d7c5916a59ba60133c4c9636a616071",
-        "revCount": 19,
+        "rev": "13ecf719f3bdb9ca33e2ddcbc999c087f4cd326f",
+        "revCount": 20,
         "type": "git",
         "url": "ssh://git/ozzie/nixos-lab.git"
       },
@@ -73,16 +94,19 @@
     },
     "ozzie-workstation": {
       "inputs": {
+        "home-manager": [
+          "home-manager"
+        ],
         "nixpkgs": [
           "nixpkgs"
         ]
       },
       "locked": {
-        "lastModified": 1735300483,
-        "narHash": "sha256-DRGiK43/1oRri+502d0GZW69Nj1eALRXZwIGpoeyBWQ=",
+        "lastModified": 1736040840,
+        "narHash": "sha256-RyHXoq0gs3t9a0fS9SZ8o29VD/Qvl+yOk/MKtLrgDW0=",
         "ref": "refs/heads/main",
-        "rev": "ec3041ad5f263fb9f3c477461dba349a1fb74cac",
-        "revCount": 6,
+        "rev": "cccbec57c325f268eddfe3fd961b222f7149125c",
+        "revCount": 7,
         "type": "git",
         "url": "ssh://git/ozzie/nix-workstation.git"
       },
@@ -93,6 +117,7 @@
     },
     "root": {
       "inputs": {
+        "home-manager": "home-manager",
         "nixos-hardware": "nixos-hardware",
         "nixpkgs": "nixpkgs",
         "ozzie-lab": "ozzie-lab",
