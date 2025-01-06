@@ -21,6 +21,7 @@
       inputs = {
         home-manager.follows = "home-manager";
         nixpkgs.follows = "nixpkgs";
+        stylix.follows = "stylix";
       };
     };
 
@@ -28,21 +29,35 @@
       inputs.nixpkgs.follows = "nixpkgs";
       url = "git+ssh://git/ozzie/nixos-secrets.git";
     };
+
+    stylix = {
+      url = "github:nix-community/stylix/release-24.11";
+
+      inputs = {
+        home-manager.follows = "home-manager";
+        nixpkgs.follows = "nixpkgs";
+      };
+    };
   };
 
   outputs =
     inputs@{
       ozzie-lab,
+      ozzie-workstation,
       self,
+      stylix,
       ...
     }:
     let
       coreHomeModules = [
+        ozzie-workstation.homeModules.default
       ];
 
       coreModules = [
         ozzie-lab.nixosModules.default
+        ozzie-workstation.nixosModules.default
         self.nixosModules.site
+        stylix.nixosModules.stylix
       ];
     in
     {

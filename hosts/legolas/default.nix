@@ -9,6 +9,10 @@
   home = true;
   system = "x86_64-linux";
 
+  homeModules = [
+    ozzie-workstation.homeModules.hyprland
+  ];
+
   modules = [
     nixos-hardware.nixosModules.framework-13-7040-amd
     ./hardware-configuration.nix
