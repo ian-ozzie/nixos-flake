@@ -20,11 +20,14 @@
     ];
 
     packages = with pkgs; [
+      atuin
+
       alejandra
       deadnix
-      killall
       nix-search
       statix
+
+      socat
       unzip
     ];
   };
