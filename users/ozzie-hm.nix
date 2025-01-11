@@ -9,7 +9,6 @@
 
       packages = with pkgs; [
         firefox
-        kitty
 
         discord
 
@@ -24,6 +23,10 @@
 
         supersonic
       ];
+    };
+
+    ozzie.workstation = {
+      kitty.enable = true;
     };
 
     programs = {
