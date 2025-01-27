@@ -1,7 +1,4 @@
 {
-  system.stateVersion = "24.05";
-  nixpkgs.config.allowUnfree = true;
-
   boot = {
     loader = {
       efi.canTouchEfiVariables = true;
@@ -15,7 +12,6 @@
   networking = {
     dhcpcd.enable = true;
     hostId = "bc7acc81";
-    hostName = "legolas";
 
     firewall = {
       allowedTCPPorts = [ ];

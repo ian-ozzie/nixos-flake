@@ -6,7 +6,9 @@
   ...
 }:
 {
+  allowUnfree = true;
   home = true;
+  state = "24.05";
   system = "x86_64-linux";
 
   homeModules = [

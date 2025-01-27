@@ -4,14 +4,13 @@
   ...
 }:
 {
+  state = "24.05";
   system = "x86_64-linux";
 
   modules = [
     ozzie-workstation.nixosModules.gnome
 
     {
-      system.stateVersion = "24.05";
-
       boot = {
         extraModulePackages = [ ];
         kernelModules = [ "kvm-amd" ];
