@@ -22,6 +22,9 @@
     packages = with pkgs; [
       atuin
 
+      ripgrep
+      moar
+
       alejandra
       deadnix
       nix-search
