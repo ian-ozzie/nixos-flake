@@ -102,6 +102,41 @@ Check flake inputs
 nix flake metadata
 ```
 
+### deploy
+
+Deploy configuration to remote target
+
+Only build by default, test/switch/boot with argument
+
+Inputs: CONFIG, COMMAND, TARGET_HOST
+Environment: COMMAND=build, TARGET_HOST=
+
+```bash
+if [ -z "${TARGET_HOST}" ]; then
+    TARGET_HOST=$CONFIG
+fi
+
+nixos-rebuild $COMMAND --use-remote-sudo --target-host $TARGET_HOST --flake .#$CONFIG
+xc notify "nix: deploy on $TARGET_HOST" "completed $COMMAND"
+```
+
+### deploy-hosts
+
+Deploys all known hosts, or provided list
+
+Inputs: HOSTS, COMMAND
+Environment: HOSTS=, COMMAND=build, NIX_SSHOPTS=-t
+
+```bash
+if [ -z "${HOSTS}" ]; then
+    HOSTS=$(ls -1 hosts/)
+fi
+
+for host in $HOSTS; do
+    xc deploy $host $COMMAND
+done
+```
+
 ### test
 
 Used to validate flake, builds all known hosts, or provided list
@@ -184,6 +219,38 @@ Environment: CONFIG=installer-minimal
 ```bash
 nom build .#isoConfigurations.${CONFIG}.config.system.build.isoImage
 xc notify "nix: iso" "created $CONFIG"
+```
+
+### install
+
+Install through nixos-anywhere
+
+Inputs: CONFIG, HOST
+Environment: HOST=
+
+```bash
+if [ -z "${HOST}" ]; then
+    HOST=$CONFIG
+fi
+
+nix run github:nix-community/nixos-anywhere -- --flake .#$CONFIG $HOST
+xc notify "nix: install on $HOST" "completed"
+```
+
+### reinstall
+
+Same as install, but only tell disko to remount rather then reinit
+
+Inputs: CONFIG, HOST
+Environment: HOST=
+
+```bash
+if [ -z "${HOST}" ]; then
+    HOST=$CONFIG
+fi
+
+nix run github:nix-community/nixos-anywhere -- --flake .#$CONFIG $HOST --disko-mode mount
+xc notify "nix: reinstall on $HOST" "complete"
 ```
 
 ### notify
