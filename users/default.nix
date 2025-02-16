@@ -1,4 +1,4 @@
 {
-  ozzie = import ./ozzie.nix;
-  ozzieHome = import ./ozzie-hm.nix;
+  ozzie = import ./ozzie;
+  ozzieHome = import ./ozzie/hm.nix;
 }

@@ -32,6 +32,11 @@
       framework-13-7040-amd.enable = true;
     };
 
+    ozzie = {
+      games = true;
+      work = true;
+    };
+
     roles = {
       laptop.enable = true;
     };
