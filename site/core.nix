@@ -1,4 +1,9 @@
 {
+  lib,
+  ...
+}:
+{
+  boot.loader.grub.configurationLimit = 10;
   console.keyMap = "us";
   time.timeZone = "Australia/Sydney";
 
@@ -18,13 +23,27 @@
     };
   };
 
-  nix.settings = {
-    trusted-users = [ "root" ];
+  nix = {
+    gc = {
+      automatic = true;
+      dates = "03:45";
+      options = "-d --delete-older-than 7d";
+    };
 
-    experimental-features = [
-      "flakes"
-      "nix-command"
-    ];
+    optimise = {
+      automatic = true;
+      dates = [ "02:45" ];
+    };
+
+    settings = {
+      auto-optimise-store = true;
+      keep-going = true;
+
+      experimental-features = [
+        "flakes"
+        "nix-command"
+      ];
+    };
   };
 
   programs = {
@@ -41,7 +60,16 @@
 
   services = {
     netbird.enable = true;
-    openssh.enable = true;
+
+    openssh = {
+      enable = true;
+
+      settings = {
+        AllowUsers = [ ];
+        PasswordAuthentication = false;
+        PermitRootLogin = lib.mkDefault "no";
+      };
+    };
 
     xserver.xkb = {
       layout = "us";

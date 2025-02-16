@@ -4,18 +4,26 @@
 }:
 {
   environment.systemPackages = with pkgs; [
-    bind.dnsutils
+    bandwhich
+    btop
     curl
     git
-    htop
+    iftop
     inetutils
+    iotop
+    jq
+    lshw
     lsof
     man
+    mtr
     nixfmt-rfc-style
     pre-commit
     rsync
+    scc
     screen
     strace
+    tcpdump
+    tealdeer
     vim
     wget
     xc

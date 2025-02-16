@@ -4,6 +4,7 @@
 }:
 {
   nix.settings.trusted-users = [ "ozzie" ];
+  services.openssh.settings.AllowUsers = [ "ozzie" ];
 
   users.users.ozzie = {
     extraGroups = [ "wheel" ];
@@ -21,9 +22,6 @@
 
     packages = with pkgs; [
       atuin
-
-      ripgrep
-      moar
 
       alejandra
       deadnix
