@@ -28,6 +28,7 @@
       nix-search
       statix
 
+      litecli
       socat
       unzip
     ];
