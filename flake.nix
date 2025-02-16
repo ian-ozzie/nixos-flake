@@ -59,6 +59,16 @@
         self.nixosModules.site
         stylix.nixosModules.stylix
       ];
+
+      overlays = [
+        (_: prev: {
+          kitty = prev.kitty.overrideAttrs (oldAttrs: {
+            patches = (oldAttrs.patches or [ ]) ++ [
+              ./patches/kitty-mouse-resize.patch
+            ];
+          });
+        })
+      ];
     in
     {
       nixosConfigurations = ozzie-lab.lib.genNixOSHosts {
@@ -66,6 +76,7 @@
           coreHomeModules
           coreModules
           inputs
+          overlays
           ;
 
         specialArgs = {
@@ -78,6 +89,7 @@
           coreHomeModules
           coreModules
           inputs
+          overlays
           ;
 
         directory = "${inputs.self}/isos";
@@ -88,6 +100,7 @@
           coreHomeModules
           coreModules
           inputs
+          overlays
           ;
 
         directory = "${inputs.self}/deprecated";
