@@ -24,6 +24,7 @@
     strace
     tcpdump
     tealdeer
+    trippy
     vim
     wget
     xc
