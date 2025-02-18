@@ -67,6 +67,12 @@
               ./patches/kitty-mouse-resize.patch
             ];
           });
+
+          xc = prev.xc.overrideAttrs (oldAttrs: {
+            patches = (oldAttrs.patches or [ ]) ++ [
+              ./patches/xc-remove-output-wrapper.patch
+            ];
+          });
         })
       ];
     in
