@@ -18,7 +18,6 @@ in
     boot = {
       extraModulePackages = [ ];
       kernelModules = [ "kvm-amd" ];
-      kernelPackages = with pkgs; linuxPackages_latest;
 
       initrd = {
         kernelModules = [ ];
