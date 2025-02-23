@@ -9,6 +9,14 @@
     };
   };
 
+  home-manager.users.ozzie = {
+    wayland.windowManager.hyprland.settings = {
+      monitor = [
+        ",preferred,auto,auto"
+      ];
+    };
+  };
+
   networking = {
     dhcpcd.enable = true;
     hostId = "bc7acc81";

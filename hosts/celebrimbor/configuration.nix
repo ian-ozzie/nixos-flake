@@ -9,6 +9,15 @@
     };
   };
 
+  home-manager.users.ozzie = {
+    wayland.windowManager.hyprland.settings = {
+      monitor = [
+        "DP-1,3440x1440@144,0x0,1"
+        "DP-2,1920x1200@60,680x-1440,1"
+      ];
+    };
+  };
+
   networking = {
     dhcpcd.enable = true;
     hostId = "b39dce7f";

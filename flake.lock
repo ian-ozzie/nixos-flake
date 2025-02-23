@@ -343,11 +343,11 @@
         ]
       },
       "locked": {
-        "lastModified": 1739704268,
-        "narHash": "sha256-HCS7mA72RA6ueHiMTW9K8IPcMC1KGNQ0Q05ty5M2KWU=",
+        "lastModified": 1740270718,
+        "narHash": "sha256-bJt5AzY919si/P4Qa0cYrXLIhnIX9VpRbknTnvC8RiY=",
         "ref": "refs/heads/main",
-        "rev": "0e5ae987c75b726dce4f008294efd477a4840a89",
-        "revCount": 23,
+        "rev": "27ea4c78f9259e4128f39846fc2f8357f88d8241",
+        "revCount": 24,
         "type": "git",
         "url": "ssh://git/ozzie/nix-workstation.git"
       },
