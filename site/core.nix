@@ -3,9 +3,13 @@
   ...
 }:
 {
-  boot.loader.grub.configurationLimit = 10;
   console.keyMap = "us";
   time.timeZone = "Australia/Sydney";
+
+  boot.loader = {
+    grub.configurationLimit = 10;
+    systemd-boot.configurationLimit = 10;
+  };
 
   i18n = {
     defaultLocale = "en_AU.UTF-8";
