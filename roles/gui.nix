@@ -12,6 +12,11 @@ in
   };
 
   config = lib.mkIf cfg.enable {
+    networking.networkmanager = {
+      dns = "systemd-resolved";
+      enable = true;
+    };
+
     programs = {
       ssh.startAgent = true;
     };

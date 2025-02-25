@@ -50,11 +50,6 @@ in
       enableAllFirmware = true;
     };
 
-    networking.networkmanager = {
-      dns = "systemd-resolved";
-      enable = true;
-    };
-
     services = {
       fprintd.enable = false;
       fwupd.enable = true;
