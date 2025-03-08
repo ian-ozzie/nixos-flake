@@ -32,6 +32,7 @@
     lab = {
       acme.enable = true;
       adguardhome.enable = true;
+      syncthing.enable = true;
       traefik.enable = true;
     };
   };
