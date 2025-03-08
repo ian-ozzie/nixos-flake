@@ -34,9 +34,7 @@ in
 
     environment.systemPackages = with pkgs; [
       brightnessctl
-      clinfo
       framework-tool
-      glxinfo
       lm_sensors
       nvtopPackages.amd
       powertop
