@@ -20,22 +20,23 @@
         stateVersion = "24.11";
 
         packages = with pkgs; [
+          obsidian
+
           brave
+          browsers
           firefox
 
           discord
-          obsidian
+          mpv
+          supersonic
+          vlc
 
           openscad-unstable
           qidi-slicer-bin
 
           gimp
           inkscape
-
           losslesscut-bin
-          vlc
-
-          supersonic
         ];
       };
 
@@ -53,6 +54,23 @@
 
         btop = {
           enable = true;
+        };
+      };
+
+      xdg = {
+        mimeApps = {
+          enable = true;
+          defaultApplications =
+            let
+              browser = "software.Browsers.desktop";
+            in
+            {
+              "text/html" = browser;
+              "x-scheme-handler/about" = browser;
+              "x-scheme-handler/http" = browser;
+              "x-scheme-handler/https" = browser;
+              "x-scheme-handler/unknown" = browser;
+            };
         };
       };
     };
