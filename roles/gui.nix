@@ -22,7 +22,10 @@ in
     };
 
     users.users = {
-      ozzie.extraGroups = [ "networkmanager" ];
+      ozzie.extraGroups = [
+        "input"
+        "networkmanager"
+      ];
     };
   };
 }

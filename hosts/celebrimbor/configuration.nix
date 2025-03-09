@@ -41,6 +41,8 @@
     hardware = {
       intel-b580.enable = true;
       intel-i5-13600k.enable = true;
+
+      wooting-80he.enable = true;
     };
 
     ozzie = {
