@@ -22,7 +22,6 @@
 
     nixos-hardware.nixosModules.common-cpu-intel
     nixos-hardware.nixosModules.common-gpu-intel
-    ./hardware-configuration.nix
 
     ozzie-secrets.nixosModules.site
     ozzie-secrets.nixosModules.hosts.celebrimbor

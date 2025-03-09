@@ -38,6 +38,11 @@
   };
 
   site = {
+    hardware = {
+      intel-b580.enable = true;
+      intel-i5-13600k.enable = true;
+    };
+
     ozzie = {
       games = true;
       work = true;
