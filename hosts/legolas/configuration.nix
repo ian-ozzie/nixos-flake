@@ -10,7 +10,28 @@
   };
 
   home-manager.users.ozzie = {
+    services.hypridle.settings.listener = [
+      {
+        on-resume = "brightnessctl -d framework_laptop::kbd_backlight set 100";
+        on-timeout = "brightnessctl -d framework_laptop::kbd_backlight set 0";
+        timeout = 60;
+      }
+      {
+        on-resume = "brightnessctl -d chromeos:white:power set 0";
+        on-timeout = "brightnessctl -d chromeos:white:power set 1";
+        timeout = 360;
+      }
+    ];
+
     wayland.windowManager.hyprland.settings = {
+      exec-once = [
+        "brightnessctl set 0"
+        "brightnessctl -d framework_laptop::kbd_backlight set 100"
+        "brightnessctl -d chromeos:white:power set 0"
+        "[workspace 1] $terminal"
+        "[workspace 8 silent] $browser"
+      ];
+
       monitor = [
         ",preferred,auto,auto"
       ];
