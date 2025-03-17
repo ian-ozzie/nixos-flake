@@ -17,16 +17,15 @@ in
       nvtopPackages.intel
     ];
 
-    hardware.graphics = {
-      enable = true;
+    hardware = {
+      graphics = {
+        enable = true;
+        enable32Bit = true;
 
-      extraPackages = with pkgs; [
-        intel-media-driver
-        libvdpau-va-gl
-        vaapiIntel
-        vaapiVdpau
-        vpl-gpu-rt
-      ];
+        extraPackages = with pkgs; [
+          vpl-gpu-rt
+        ];
+      };
     };
   };
 }
