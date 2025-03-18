@@ -9,7 +9,12 @@
     self.nixosModules.users.ozzie
 
     (
-      { modulesPath, ... }:
+      {
+        config,
+        lib,
+        modulesPath,
+        ...
+      }:
       {
         imports = [
           (modulesPath + "/installer/cd-dvd/installation-cd-minimal.nix")
@@ -22,7 +27,15 @@
 
         services.openssh = {
           enable = true;
-          settings.AllowUsers = [ "root" ];
+
+          settings = {
+            AllowUsers = [ "root" ];
+            PermitRootLogin = lib.mkForce "without-password";
+          };
+        };
+
+        users.users.root.openssh.authorizedKeys = {
+          inherit (config.users.users.ozzie.openssh.authorizedKeys) keys;
         };
       }
     )
