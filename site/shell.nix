@@ -18,13 +18,37 @@ in
 {
   environment = {
     systemPackages = with pkgs; [
+      bandwhich
       bat
+      btop
+      curl
       doggo
       duf
       dust
       eza
       fastfetch
+      git
+      iftop
+      inetutils
+      iotop
+      jq
+      lshw
+      lsof
+      man
+      mtr
+      pre-commit
       ripgrep
+      rsync
+      scc
+      screen
+      strace
+      tcpdump
+      tealdeer
+      trippy
+      vim
+      wget
+      xc
+      xh
     ];
   };
 
