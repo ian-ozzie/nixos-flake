@@ -10,6 +10,8 @@ in
 {
   config = lib.mkIf cfg.games {
     home-manager.users.ozzie = {
+      stylix.targets.mangohud.enable = false;
+
       home = {
         packages = with pkgs; [
           lutris
@@ -27,7 +29,7 @@ in
           package = with pkgs; mangohud;
 
           settings = {
-            preset = 2;
+            preset = 1;
           };
         };
       };
