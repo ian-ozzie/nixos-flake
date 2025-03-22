@@ -25,6 +25,7 @@ in
         stateVersion = "24.11";
 
         packages = with pkgs; [
+          bitwarden
           obsidian
 
           brave
@@ -33,6 +34,7 @@ in
 
           discord
           mpv
+          strawberry
           supersonic
           vlc
 
