@@ -18,9 +18,7 @@ in
 {
   environment = {
     systemPackages = with pkgs; [
-      bandwhich
       bat
-      btop
       curl
       doggo
       duf
@@ -28,15 +26,11 @@ in
       eza
       fastfetch
       git
-      iftop
       inetutils
-      iotop
       jq
       lshw
       lsof
       man
-      mtr
-      pre-commit
       ripgrep
       rsync
       scc
@@ -44,11 +38,20 @@ in
       strace
       tcpdump
       tealdeer
-      trippy
-      vim
       wget
       xc
       xh
+
+      bandwhich
+      btop
+      iftop
+      iotop
+      mtr
+      trippy
+      vim
+
+      nixfmt-rfc-style
+      pre-commit
     ];
   };
 
