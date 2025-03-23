@@ -50,15 +50,16 @@
     };
   };
 
+  ozzie = {
+    workstation = {
+      nvf.enable = true;
+    };
+  };
+
   programs = {
     nh = {
       enable = true;
       flake = "/data/nixos/flake";
-    };
-
-    vim = {
-      enable = true;
-      defaultEditor = true;
     };
   };
 

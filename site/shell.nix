@@ -48,7 +48,6 @@ in
       iotop
       mtr
       trippy
-      vim
 
       nixfmt-rfc-style
       pre-commit

@@ -15,6 +15,11 @@
       url = "github:nix-community/home-manager";
     };
 
+    nvf = {
+      inputs.nixpkgs.follows = "nixpkgs";
+      url = "github:notashelf/nvf";
+    };
+
     ozzie-lab = {
       inputs.nixpkgs.follows = "nixpkgs";
       url = "git+ssh://git/ozzie/nixos-lab.git";
@@ -26,6 +31,7 @@
       inputs = {
         home-manager.follows = "home-manager";
         nixpkgs.follows = "nixpkgs";
+        nvf.follows = "nvf";
         stylix.follows = "stylix";
       };
     };
@@ -47,6 +53,7 @@
 
   outputs =
     inputs@{
+      nvf,
       ozzie-lab,
       ozzie-workstation,
       self,
@@ -55,10 +62,12 @@
     }:
     let
       coreHomeModules = [
+        nvf.homeManagerModules.default
         ozzie-workstation.homeModules.default
       ];
 
       coreModules = [
+        nvf.nixosModules.default
         ozzie-lab.nixosModules.default
         ozzie-workstation.nixosModules.default
         self.nixosModules.site
