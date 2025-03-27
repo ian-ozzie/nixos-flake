@@ -25,7 +25,7 @@
 
     wayland.windowManager.hyprland.settings = {
       exec-once = [
-        "brightnessctl set 0"
+        "brightnessctl set 10"
         "brightnessctl -d framework_laptop::kbd_backlight set 100"
         "brightnessctl -d chromeos:white:power set 0"
         "[workspace 1] $terminal"
