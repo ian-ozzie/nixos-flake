@@ -412,11 +412,11 @@
         ]
       },
       "locked": {
-        "lastModified": 1742277336,
-        "narHash": "sha256-T90gbYXJsUd8xNxROs9597nGjtVnMgYVw8qvWtmAQj0=",
+        "lastModified": 1743032863,
+        "narHash": "sha256-cZzvVUf8osIxQ68F5aOlHkW63eOFrcPKQA1lNAJ1D1E=",
         "ref": "refs/heads/main",
-        "rev": "a98f7664dcbe0f4a699dfbe776b3e2e8e3851739",
-        "revCount": 26,
+        "rev": "3763931cdb2e8f27cc9413805c7ec2d23ecd1169",
+        "revCount": 29,
         "type": "git",
         "url": "ssh://git/ozzie/nixos-lab.git"
       },
@@ -432,11 +432,11 @@
         ]
       },
       "locked": {
-        "lastModified": 1742275178,
-        "narHash": "sha256-ZEQ9mHH2AesvQRCVLfJfIe4j+4puil+nHRPhijhZWk0=",
+        "lastModified": 1743033857,
+        "narHash": "sha256-ZXI7QOK1l/wCHJA+OK+qh2XWBAO8i7rAaJcsFVrgnd8=",
         "ref": "refs/heads/main",
-        "rev": "c8e1c3a2fb7ce8a622cfde8b59535c32d1ba295b",
-        "revCount": 7,
+        "rev": "8c549e5d6b410fb65d87e239453b978f0b5e54e2",
+        "revCount": 11,
         "type": "git",
         "url": "ssh://git/ozzie/nixos-secrets.git"
       },
