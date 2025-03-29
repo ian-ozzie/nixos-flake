@@ -25,6 +25,7 @@ in
         stateVersion = "24.11";
 
         packages = with pkgs; [
+          pcmanfm
           wl-clipboard
 
           bitwarden
