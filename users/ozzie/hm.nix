@@ -26,6 +26,7 @@ in
 
         packages = with pkgs; [
           pcmanfm
+          viewnior
           wl-clipboard
 
           bitwarden
