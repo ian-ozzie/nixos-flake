@@ -74,6 +74,10 @@ in
           defaultApplications =
             let
               browser = "software.Browsers.desktop";
+              explorer = "pcmanfm.desktop";
+              images = "viewnior.desktop";
+              terminal = "kitty.desktop";
+              videos = "mpv.desktop";
             in
             {
               "text/html" = browser;
@@ -81,6 +85,28 @@ in
               "x-scheme-handler/http" = browser;
               "x-scheme-handler/https" = browser;
               "x-scheme-handler/unknown" = browser;
+
+              "inode/directory" = explorer;
+
+              "image/bmp" = images;
+              "image/gif" = images;
+              "image/jpeg" = images;
+              "image/jpg" = images;
+              "image/png" = images;
+              "image/tiff" = images;
+              "image/webp" = images;
+
+              "terminal" = terminal;
+              "x-scheme-handler/terminal" = terminal;
+
+              "video/mp2t" = videos;
+              "video/mp4" = videos;
+              "video/mpeg" = videos;
+              "video/ogg" = videos;
+              "video/webm" = videos;
+              "video/x-flv" = videos;
+              "video/x-matroska" = videos;
+              "video/x-msvideo" = videos;
             };
         };
 
