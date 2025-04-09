@@ -19,6 +19,7 @@ in
   environment = {
     systemPackages = with pkgs; [
       bat
+      csview
       curl
       doggo
       duf
