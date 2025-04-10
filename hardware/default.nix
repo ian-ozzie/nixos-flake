@@ -7,6 +7,7 @@
     ./intel-i5-13600k.nix
 
     ./keychron-q3.nix
+    ./openterface-mini-kvm.nix
     ./wooting-80he.nix
   ];
 }

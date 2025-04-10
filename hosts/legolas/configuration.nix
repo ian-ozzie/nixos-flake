@@ -60,6 +60,8 @@
   site = {
     hardware = {
       framework-13-7040-amd.enable = true;
+
+      openterface-mini-kvm.enable = true;
     };
 
     ozzie = {
