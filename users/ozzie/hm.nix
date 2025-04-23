@@ -68,6 +68,10 @@ in
         };
       };
 
+      wayland.windowManager.hyprland.settings.exec-once = [
+        "netbird-ui"
+      ];
+
       xdg = {
         mimeApps = {
           enable = true;
