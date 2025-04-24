@@ -19,6 +19,10 @@ in
 
     programs = {
       ssh.startAgent = true;
+
+      nvf = {
+        settings.vim.useSystemClipboard = true;
+      };
     };
 
     users.users = {
