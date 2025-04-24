@@ -31,7 +31,6 @@
     gc = {
       automatic = true;
       dates = "03:45";
-      options = "-d --delete-older-than 7d";
     };
 
     optimise = {
