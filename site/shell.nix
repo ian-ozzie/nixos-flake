@@ -11,8 +11,8 @@ let
     du = "dust";
     grep = "rg --no-heading -N";
     less = "bat --paging always --style plain";
-    ls = "eza --group --group-directories-first -l --icons";
-    tree = "eza --tree --group-directories-first --icons";
+    ls = "lsd";
+    tree = "lsd --tree";
   };
 in
 {
@@ -24,11 +24,11 @@ in
       doggo
       duf
       dust
-      eza
       fastfetch
       git
       inetutils
       jq
+      lsd
       lshw
       lsof
       man
