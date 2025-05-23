@@ -17,6 +17,8 @@ let
 in
 {
   environment = {
+    enableAllTerminfo = true;
+
     systemPackages = with pkgs; [
       bat
       csview
