@@ -37,6 +37,7 @@ in
           firefox
 
           discord
+          lrcget
           mpv
           strawberry
           supersonic
