@@ -21,7 +21,7 @@ in
       ssh.startAgent = true;
 
       nvf = {
-        settings.vim.useSystemClipboard = true;
+        settings.vim.clipboard.providers.wl-copy.enable = true;
       };
     };
 
