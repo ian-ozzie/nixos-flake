@@ -27,6 +27,7 @@ in
       duf
       dust
       fastfetch
+      fd
       git
       inetutils
       jq
