@@ -36,6 +36,7 @@ in
           browsers
           firefox
 
+          calibre
           discord
           lrcget
           mpv
