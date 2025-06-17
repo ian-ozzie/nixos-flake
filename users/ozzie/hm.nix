@@ -38,6 +38,7 @@ in
 
           calibre
           discord
+          kodi
           lrcget
           mpv
           strawberry
