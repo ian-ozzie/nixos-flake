@@ -15,7 +15,11 @@
     wayland.windowManager.hyprland.settings = {
       exec-once = [
         "[workspace 1] $terminal"
+        "[workspace 2 silent] google-chrome-stable"
+        "[workspace 3 silent] slack"
         "[workspace 8 silent] $browser"
+        "[workspace 9 silent] obsidian"
+        "[workspace 10 silent] supersonic"
       ];
 
       monitor = [
@@ -72,6 +76,16 @@
 
     roles = {
       desktop.enable = true;
+    };
+  };
+
+  systemd.network = {
+    enable = true;
+
+    networks."10-lan" = {
+      dhcpV4Config.UseDNS = false;
+      name = "enp4s0f0";
+      networkConfig.DHCP = "ipv4";
     };
   };
 }

@@ -64,6 +64,7 @@
 
   services = {
     netbird.enable = true;
+    resolved.enable = true;
 
     openssh = {
       enable = true;
