@@ -24,7 +24,7 @@ in
 
       programs = {
         mangohud = {
-          enable = true;
+          enable = false;
           enableSessionWide = true;
           package = with pkgs; mangohud;
 
