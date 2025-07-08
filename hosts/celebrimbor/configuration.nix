@@ -48,6 +48,7 @@
       intel-i5-13600k.enable = true;
 
       wooting-80he.enable = true;
+      xbox-wireless-adapter.enable = true;
     };
 
     ozzie = {

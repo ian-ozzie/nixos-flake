@@ -9,5 +9,6 @@
     ./keychron-q3.nix
     ./openterface-mini-kvm.nix
     ./wooting-80he.nix
+    ./xbox-wireless-adapter.nix
   ];
 }
