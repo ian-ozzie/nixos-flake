@@ -50,6 +50,7 @@ in
           vlc
 
           openscad-unstable
+          orca-slicer
           qidi-slicer-bin
 
           gimp
