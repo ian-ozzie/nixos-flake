@@ -30,19 +30,23 @@ in
           wl-clipboard
 
           bitwarden
+          calibre
           obsidian
 
           brave
           browsers
           firefox
 
-          calibre
           discord
-          kodi
+
+          feishin
           lrcget
-          mpv
           strawberry
           supersonic
+          youtube-music
+
+          kodi
+          mpv
           vlc
 
           openscad-unstable
