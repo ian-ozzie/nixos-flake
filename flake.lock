@@ -417,11 +417,11 @@
         ]
       },
       "locked": {
-        "lastModified": 1750658257,
-        "narHash": "sha256-C5QqhxYvjaHVKFhYQe6KvW1Aro7b6l2oJE/P2FZh8CM=",
+        "lastModified": 1752125670,
+        "narHash": "sha256-kr/IKPW5Ra/8VieaIDaIVdM1FjeOLuR2KLqVrE+UUT0=",
         "ref": "refs/heads/main",
-        "rev": "c3b8a4b4502652dda3117b51188486b7fd3e9d4a",
-        "revCount": 33,
+        "rev": "688ced4d1b603a1697608664c00526f25230182b",
+        "revCount": 34,
         "type": "git",
         "url": "ssh://git/ozzie/nixos-lab.git"
       },
