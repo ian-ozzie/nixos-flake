@@ -1,4 +1,5 @@
 {
+  disko,
   nixos-hardware,
   ozzie-secrets,
   ozzie-workstation,
@@ -16,8 +17,10 @@
   ];
 
   modules = [
+    disko.nixosModules.disko
+    ./storage.nix
+
     nixos-hardware.nixosModules.framework-13-7040-amd
-    ./hardware-configuration.nix
 
     ozzie-secrets.nixosModules.site
     ozzie-secrets.nixosModules.hosts.legolas
