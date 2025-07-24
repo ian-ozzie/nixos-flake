@@ -28,6 +28,7 @@ in
       dust
       fastfetch
       fd
+      file
       git
       inetutils
       jq
@@ -35,6 +36,7 @@ in
       lshw
       lsof
       man
+      openssl
       ripgrep
       rsync
       scc
