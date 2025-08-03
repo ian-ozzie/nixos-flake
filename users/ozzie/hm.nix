@@ -53,7 +53,7 @@ in
           orca-slicer
           qidi-slicer-bin
 
-          gimp
+          gimp3
           inkscape
           losslesscut-bin
         ];
