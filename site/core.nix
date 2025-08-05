@@ -1,8 +1,4 @@
 {
-  lib,
-  ...
-}:
-{
   console.keyMap = "us";
   time.timeZone = "Australia/Sydney";
 
@@ -63,18 +59,7 @@
   };
 
   services = {
-    netbird.enable = true;
     resolved.enable = true;
-
-    openssh = {
-      enable = true;
-
-      settings = {
-        AllowUsers = [ ];
-        PasswordAuthentication = false;
-        PermitRootLogin = lib.mkDefault "no";
-      };
-    };
 
     xserver.xkb = {
       layout = "us";
