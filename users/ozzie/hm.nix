@@ -60,7 +60,9 @@ in
       };
 
       ozzie.workstation = {
+        firefox.enable = true;
         kitty.enable = true;
+        librewolf.enable = true;
       };
 
       programs = {
