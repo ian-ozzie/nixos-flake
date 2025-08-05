@@ -36,6 +36,7 @@ in
       lshw
       lsof
       man
+      nix-output-monitor
       openssl
       ripgrep
       rsync
