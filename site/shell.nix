@@ -21,6 +21,7 @@ in
 
     systemPackages = with pkgs; [
       bat
+      bc
       csview
       curl
       doggo
