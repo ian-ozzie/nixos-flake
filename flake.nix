@@ -3,7 +3,7 @@
 
   inputs = {
     nixos-hardware.url = "github:nixos/nixos-hardware";
-    nixpkgs.url = "github:nixos/nixpkgs/nixos-25.05";
+    nixpkgs.url = "github:nixos/nixpkgs/nixos-unstable";
 
     disko = {
       inputs.nixpkgs.follows = "nixpkgs";
@@ -12,7 +12,7 @@
 
     home-manager = {
       inputs.nixpkgs.follows = "nixpkgs";
-      url = "github:nix-community/home-manager/release-25.05";
+      url = "github:nix-community/home-manager";
     };
 
     nvf = {
@@ -43,7 +43,7 @@
 
     stylix = {
       inputs.nixpkgs.follows = "nixpkgs";
-      url = "github:nix-community/stylix/release-25.05";
+      url = "github:nix-community/stylix";
     };
   };
 

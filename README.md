@@ -116,7 +116,7 @@ if [ -z "${TARGET_HOST}" ]; then
     TARGET_HOST=$CONFIG
 fi
 
-nixos-rebuild $COMMAND --use-remote-sudo --target-host $TARGET_HOST --flake .#$CONFIG
+nixos-rebuild $COMMAND --sudo --ask-sudo-password --target-host $TARGET_HOST --flake .#$CONFIG
 xc notify "nix: deploy on $TARGET_HOST" "completed $COMMAND"
 ```
 

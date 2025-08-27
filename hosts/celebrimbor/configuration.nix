@@ -1,5 +1,11 @@
 {
+  pkgs,
+  ...
+}:
+{
   boot = {
+    kernelPackages = with pkgs; linuxKernel.packages.linux_6_16;
+
     loader = {
       efi.canTouchEfiVariables = true;
 
