@@ -221,6 +221,14 @@ nom build .#isoConfigurations.${CONFIG}.config.system.build.isoImage
 xc notify "nix: iso" "created $CONFIG"
 ```
 
+### iso-wizard
+
+Create installation ISO from nixos-wizard
+
+```bash
+nix build github:km-clay/nixos-wizard#nixosConfigurations.installerIso.config.system.build.isoImage
+```
+
 ### install
 
 Install through nixos-anywhere
