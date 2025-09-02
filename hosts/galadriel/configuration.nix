@@ -46,6 +46,7 @@
     lab = {
       acme.enable = true;
       adguardhome.enable = true;
+      forgejo.enable = true;
       gitea-actions-runner.enable = true;
       mysql.enable = true;
       mysql.backup.enable = true;
