@@ -47,6 +47,8 @@
       acme.enable = true;
       adguardhome.enable = true;
       gitea-actions-runner.enable = true;
+      mysql.enable = true;
+      mysql.backup.enable = true;
       ncps.enable = true;
       syncthing.enable = true;
       traefik.enable = true;
