@@ -27,6 +27,7 @@ in
       doggo
       duf
       dust
+      exiftool
       fastfetch
       fd
       file
