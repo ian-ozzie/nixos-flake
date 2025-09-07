@@ -54,6 +54,7 @@
       syncthing.enable = true;
       traefik.enable = true;
       unifi.enable = true;
+      vaultwarden.enable = true;
     };
   };
 
