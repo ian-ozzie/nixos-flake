@@ -30,6 +30,7 @@ in
       exiftool
       fastfetch
       fd
+      ffmpeg
       file
       git
       inetutils
