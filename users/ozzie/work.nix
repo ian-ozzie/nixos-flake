@@ -13,6 +13,7 @@ in
       home.packages = with pkgs; [
         _1password-gui
         google-chrome
+        google-cloud-sdk
         slack
       ];
     };
