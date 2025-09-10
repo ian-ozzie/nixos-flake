@@ -48,6 +48,7 @@ in
       strace
       tcpdump
       tealdeer
+      trash-cli
       wget
       xc
       xh
