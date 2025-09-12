@@ -59,6 +59,8 @@
   };
 
   site = {
+    environment.lab.enable = true;
+
     hardware = {
       amd-ryzen-7-4750g.enable = true;
     };

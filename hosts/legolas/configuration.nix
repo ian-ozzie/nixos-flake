@@ -58,6 +58,8 @@
   };
 
   site = {
+    environment.lab.enable = true;
+
     hardware = {
       framework-13-7040-amd.enable = true;
 

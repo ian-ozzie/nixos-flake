@@ -49,6 +49,8 @@
   };
 
   site = {
+    environment.lab.enable = true;
+
     hardware = {
       intel-b580.enable = true;
       intel-i5-13600k.enable = true;

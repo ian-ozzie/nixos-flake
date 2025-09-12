@@ -63,6 +63,8 @@
   };
 
   site = {
+    environment.work.enable = true;
+
     hardware = {
       apple-imac-19-1.enable = true;
 

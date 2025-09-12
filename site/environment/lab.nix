@@ -7,7 +7,7 @@ let
   cfg = config.site.environment.lab;
 in
 {
-  options.site.environment.lab = lib.mkOption {
+  options.site.environment.lab = {
     enable = lib.mkEnableOption "shared home lab configuration";
   };
 
