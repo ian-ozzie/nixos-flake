@@ -7,6 +7,7 @@
 
     ./intel-b580.nix
     ./intel-i5-13600k.nix
+    ./intel-n150.nix
 
     ./keychron-q3.nix
     ./openterface-mini-kvm.nix
