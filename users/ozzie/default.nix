@@ -25,6 +25,7 @@
 
       alejandra
       deadnix
+      manix
       nix-search
       statix
 
