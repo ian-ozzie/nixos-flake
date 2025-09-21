@@ -3,8 +3,8 @@
   time.timeZone = "Australia/Sydney";
 
   boot.loader = {
-    grub.configurationLimit = 10;
-    systemd-boot.configurationLimit = 10;
+    grub.configurationLimit = 4;
+    systemd-boot.configurationLimit = 4;
   };
 
   i18n = {
