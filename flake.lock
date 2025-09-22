@@ -74,11 +74,11 @@
         ]
       },
       "locked": {
-        "lastModified": 1757508292,
-        "narHash": "sha256-7lVWL5bC6xBIMWWDal41LlGAG+9u2zUorqo3QCUL4p4=",
+        "lastModified": 1758287904,
+        "narHash": "sha256-IGmaEf3Do8o5Cwp1kXBN1wQmZwQN3NLfq5t4nHtVtcU=",
         "owner": "nix-community",
         "repo": "disko",
-        "rev": "146f45bee02b8bd88812cfce6ffc0f933788875a",
+        "rev": "67ff9807dd148e704baadbd4fd783b54282ca627",
         "type": "github"
       },
       "original": {
@@ -201,11 +201,11 @@
         ]
       },
       "locked": {
-        "lastModified": 1757598712,
-        "narHash": "sha256-5PWVrdMp8u31Q247jqnJcwxKg3MJrs1TadTyTBRVBDY=",
+        "lastModified": 1758464306,
+        "narHash": "sha256-i56XRXqjwJRdVYmpzVUQ0ktqBBHqNzQHQMQvFRF/acQ=",
         "owner": "nix-community",
         "repo": "home-manager",
-        "rev": "6d7c11a0adee0db21e3a8ef90ae07bb89bc20b8f",
+        "rev": "939e91e1cff1f99736c5b02529658218ed819a2a",
         "type": "github"
       },
       "original": {
@@ -231,11 +231,11 @@
     },
     "nixos-hardware": {
       "locked": {
-        "lastModified": 1757103352,
-        "narHash": "sha256-PtT7ix43ss8PONJ1VJw3f6t2yAoGH+q462Sn8lrmWmk=",
+        "lastModified": 1757943327,
+        "narHash": "sha256-w6cDExPBqbq7fTLo4dZ1ozDGeq3yV6dSN4n/sAaS6OM=",
         "owner": "nixos",
         "repo": "nixos-hardware",
-        "rev": "11b2a10c7be726321bb854403fdeec391e798bf0",
+        "rev": "67a709cfe5d0643dafd798b0b613ed579de8be05",
         "type": "github"
       },
       "original": {
@@ -246,11 +246,11 @@
     },
     "nixpkgs": {
       "locked": {
-        "lastModified": 1757487488,
-        "narHash": "sha256-zwE/e7CuPJUWKdvvTCB7iunV4E/+G0lKfv4kk/5Izdg=",
+        "lastModified": 1758277210,
+        "narHash": "sha256-iCGWf/LTy+aY0zFu8q12lK8KuZp7yvdhStehhyX1v8w=",
         "owner": "nixos",
         "repo": "nixpkgs",
-        "rev": "ab0f3607a6c7486ea22229b92ed2d355f1482ee0",
+        "rev": "8eaee110344796db060382e15d3af0a9fc396e0e",
         "type": "github"
       },
       "original": {
@@ -296,11 +296,11 @@
         "systems": "systems"
       },
       "locked": {
-        "lastModified": 1757397598,
-        "narHash": "sha256-v/FANUOWyeWlWCD61HDLSNO9nHnQALAtvLf2VtE1+WU=",
+        "lastModified": 1758271661,
+        "narHash": "sha256-ENqd2/33uP5vB44ClDjjAV+J78oF8q1er4QUZuT8Z7g=",
         "owner": "notashelf",
         "repo": "nvf",
-        "rev": "c7944a48a3c61cb3ca08ac2dc8b8de124d15dcb8",
+        "rev": "b7571df4d6e9ac08506a738ddceeec0b141751b0",
         "type": "github"
       },
       "original": {
@@ -316,11 +316,11 @@
         ]
       },
       "locked": {
-        "lastModified": 1757228547,
-        "narHash": "sha256-Tc7TwRctXQiuuOeFy0djei+wXa8qhK3t7IesX4K/J74=",
+        "lastModified": 1758534924,
+        "narHash": "sha256-/I1NewS2d+eak0Cf3ANvFLRYheBhHZF1toSSrGT3Npg=",
         "ref": "refs/heads/main",
-        "rev": "ece5187961f2fa419148fe0b81c4004277adb67d",
-        "revCount": 45,
+        "rev": "e31b34665981b496de18996b4d3448a8b3675a07",
+        "revCount": 46,
         "type": "git",
         "url": "ssh://git/ozzie/nixos-lab.git"
       },
@@ -336,11 +336,11 @@
         ]
       },
       "locked": {
-        "lastModified": 1757745903,
-        "narHash": "sha256-JLUb2T65Zuo7O3mTIQX1G/BdhTObWi/ZHBkRKibmP4w=",
+        "lastModified": 1758537402,
+        "narHash": "sha256-S3L8bmYE9yUbRdwTb1y7CGgkruTQrI6tz5e/3AVzPqg=",
         "ref": "refs/heads/main",
-        "rev": "6048645aac47c513f68ab01b9c946ec91df32dfb",
-        "revCount": 23,
+        "rev": "2a13d9e91e63d98730fb25c1e4a1421155f28567",
+        "revCount": 24,
         "type": "git",
         "url": "ssh://git/ozzie/nixos-secrets.git"
       },
@@ -365,11 +365,11 @@
         ]
       },
       "locked": {
-        "lastModified": 1758438873,
-        "narHash": "sha256-KpqV+Ien0atk7kJDW37jHEvXGiwCWqC99ZKeKx53vho=",
+        "lastModified": 1758528935,
+        "narHash": "sha256-K36161OqXN2W9Al3ERurJpPkIUOKBcj4u1EC2CH0vuU=",
         "ref": "refs/heads/main",
-        "rev": "0f1cdc71b03e4e56c3933e018091a4af5bbfc271",
-        "revCount": 79,
+        "rev": "e793b6653ef4d1651567f9ea14ac93bdf7ed3311",
+        "revCount": 80,
         "type": "git",
         "url": "ssh://git/ozzie/nix-workstation.git"
       },
@@ -412,11 +412,11 @@
         "tinted-zed": "tinted-zed"
       },
       "locked": {
-        "lastModified": 1757360005,
-        "narHash": "sha256-VwzdFEQCpYMU9mc7BSQGQe5wA1MuTYPJnRc9TQCTMcM=",
+        "lastModified": 1757956156,
+        "narHash": "sha256-f0W7qbsCqpi6swQ5w8H+0YrAbNwsHgCFDkNRMTJjqrE=",
         "owner": "nix-community",
         "repo": "stylix",
-        "rev": "834a743c11d66ea18e8c54872fbcc72ce48bc57f",
+        "rev": "0ce0103b498bb22f899ed8862d8d7f9503ed9cdb",
         "type": "github"
       },
       "original": {
