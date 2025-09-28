@@ -22,6 +22,7 @@
 
               content = {
                 format = "vfat";
+                mountOptions = [ "nofail" ];
                 mountpoint = "/boot";
                 type = "filesystem";
               };
@@ -71,6 +72,7 @@
 
               content = {
                 format = "vfat";
+                mountOptions = [ "nofail" ];
                 mountpoint = "/boot-mirror";
                 type = "filesystem";
               };
