@@ -12,5 +12,10 @@ in
   };
 
   config = lib.mkIf cfg.enable {
+    ozzie = {
+      workstation = {
+        starship.enable = true;
+      };
+    };
   };
 }

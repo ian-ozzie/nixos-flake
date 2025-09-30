@@ -17,6 +17,12 @@ in
       enable = true;
     };
 
+    ozzie = {
+      workstation = {
+        starship.enable = true;
+      };
+    };
+
     programs = {
       ssh.startAgent = true;
 
