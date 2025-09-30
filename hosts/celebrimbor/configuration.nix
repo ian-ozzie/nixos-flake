@@ -17,6 +17,15 @@
 
   home-manager.users.ozzie = {
     wayland.windowManager.hyprland.settings = {
+      device = [
+        {
+          # increase repeat delay due to inconsistent latency on Rii i4
+          name = "telink-wireless-receiver";
+          repeat_delay = 600;
+          repeat_rate = 25;
+        }
+      ];
+
       exec-once = [
         "[workspace 1] $terminal"
         "[workspace 8 silent] $browser"
