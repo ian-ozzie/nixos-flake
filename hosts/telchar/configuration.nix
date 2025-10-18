@@ -14,10 +14,10 @@
   home-manager.users.ozzie = {
     wayland.windowManager.hyprland.settings = {
       exec-once = [
-        "[workspace 1] $terminal"
+        "[workspace 1] kitty"
         "[workspace 2 silent] google-chrome-stable"
         "[workspace 3 silent] slack"
-        "[workspace 8 silent] $browser"
+        "[workspace 8 silent] firefox"
         "[workspace 9 silent] obsidian"
         "[workspace 10 silent] supersonic"
       ];

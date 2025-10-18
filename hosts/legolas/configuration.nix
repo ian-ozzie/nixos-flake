@@ -24,12 +24,17 @@
     ];
 
     wayland.windowManager.hyprland.settings = {
+      bind = [
+        ", switch:on:Lid Switch, exec, hyprctl dispatch dpms off & hyprlock --immediate"
+        ", switch:off:Lid Switch, exec, hyprctl dispatch dpms on"
+      ];
+
       exec-once = [
         "brightnessctl set 10"
         "brightnessctl -d framework_laptop::kbd_backlight set 100"
         "brightnessctl -d chromeos:white:power set 0"
-        "[workspace 1] $terminal"
-        "[workspace 8 silent] $browser"
+        "[workspace 1] kitty"
+        "[workspace 8 silent] firefox"
       ];
 
       monitor = [

@@ -27,8 +27,8 @@
       ];
 
       exec-once = [
-        "[workspace 1] $terminal"
-        "[workspace 8 silent] $browser"
+        "[workspace 1] kitty"
+        "[workspace 8 silent] firefox"
       ];
 
       monitor = [
