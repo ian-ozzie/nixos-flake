@@ -55,6 +55,13 @@
       syncthing.enable = true;
       traefik.enable = true;
     };
+
+    workstation = {
+      theme.wallpaper = {
+        height = 1440;
+        width = 3440;
+      };
+    };
   };
 
   site = {

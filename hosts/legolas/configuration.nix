@@ -60,6 +60,14 @@
       syncthing.enable = true;
       traefik.enable = true;
     };
+
+    workstation = {
+      theme.wallpaper = {
+        height = 1920;
+        svg = ./square.svg;
+        width = 2880;
+      };
+    };
   };
 
   site = {
