@@ -19,6 +19,8 @@ in
 
     ozzie = {
       workstation = {
+        nvf.clipboard = true;
+        preset = "catppuccin-mocha";
         starship.enable = true;
       };
     };

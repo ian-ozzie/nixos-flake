@@ -14,6 +14,8 @@ in
   config = lib.mkIf cfg.enable {
     ozzie = {
       workstation = {
+        nvf.clipboard = false;
+        preset = "tokyo-night";
         starship.enable = true;
       };
     };
