@@ -1,4 +1,8 @@
 {
+  config,
+  ...
+}:
+{
   boot = {
     loader = {
       grub = {
@@ -43,7 +47,6 @@
   ozzie = {
     lab = {
       acme.enable = true;
-      adguardhome.enable = true;
       forgejo.enable = true;
       gitea-actions-runner.enable = true;
       mysql.enable = true;
@@ -52,6 +55,12 @@
       syncthing.enable = true;
       traefik.enable = true;
       vaultwarden.enable = true;
+
+      adguardhome = {
+        allowed = [ ];
+        bind = [ config.ozzie.lab.host.bind.ip ];
+        enable = true;
+      };
     };
   };
 
