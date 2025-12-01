@@ -29,7 +29,7 @@ in
           viewnior
           wl-clipboard
 
-          bitwarden
+          bitwarden-desktop
           calibre
           obsidian
 

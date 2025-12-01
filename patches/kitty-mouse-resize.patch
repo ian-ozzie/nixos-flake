@@ -1,26 +1,26 @@
-Source: https://github.com/kovidgoyal/kitty/discussions/5959#discussioncomment-5340462, rebased onto `v0.42.2`
+Source: https://github.com/kovidgoyal/kitty/discussions/5959#discussioncomment-11154948
 --- a/kitty/boss.py
 +++ b/kitty/boss.py
-@@ -14,6 +14,7 @@
+@@ -13,6 +13,7 @@
+ from contextlib import contextmanager, suppress
  from functools import partial
  from gettext import gettext as _
- from gettext import ngettext
 +from math import floor
+ from gettext import ngettext
  from time import sleep
  from typing import (
-     TYPE_CHECKING,
-@@ -260,6 +261,7 @@ def as_text(**kw: bool) -> str:
- class DumpCommands:  # {{{
- 
-     def __init__(self, args: CLIOptions):
+@@ -374,6 +374,7 @@ def __init__(
+         global_shortcuts: dict[str, SingleKey],
+         talk_fd: int = -1,
+     ):
 +        self.drag_resize_active = False
-         self.draw_dump_buf: list[str] = []
-         if args.dump_bytes:
-             self.dump_bytes_to = open(args.dump_bytes, 'wb')
-@@ -2202,6 +2204,52 @@ def switch_focus_to(self, window_id: int) -> None:
+         self.atexit = Atexit()
+         set_layout_options(opts)
+         self.clipboard = Clipboard()
+@@ -2129,6 +2131,52 @@ def switch_focus_to(self, window_id: int) -> None:
          if tab:
              tab.set_active_window(window_id)
- 
+
 +    def drag_resize_start(self, x: float, y: float, cell_width: int, cell_height: int) -> None:
 +        tab = self.active_tab
 +        if not tab:
@@ -69,14 +69,13 @@ Source: https://github.com/kovidgoyal/kitty/discussions/5959#discussioncomment-5
 +
      def open_kitty_website(self) -> None:
          self.open_url(website_url())
- 
+
 --- a/kitty/layout/base.py
 +++ b/kitty/layout/base.py
-@@ -436,3 +436,36 @@ def layout_action(self, action_name: str, args: Sequence[str], all_windows: Wind
- 
-     def layout_state(self) -> dict[str, Any]:
-         return {}
-+
+@@ -448,6 +448,39 @@ def layout_state(self) -> dict[str, Any]:
+     def set_layout_state(self, layout_state: dict[str, Any], map_group_id: WindowMapper) -> bool:
+         return True
+
 +    def drag_resize_target_windows(self, x: float, y: float, all_windows: WindowList) -> tuple[WindowType, WindowType]:
 +        # Identify the window where the click occurred and which horizontal and
 +        # vertical half it was in
@@ -109,12 +108,16 @@ Source: https://github.com/kovidgoyal/kitty/discussions/5959#discussioncomment-5
 +            vertical_target = all_windows.id_map[neighbors["top"][0]]
 +
 +        return (horizontal_target, vertical_target)
++
+     def serialize(self, all_windows: WindowList) -> dict[str, Any]:
+         ans = self.layout_state()
+         ans['opts'] = self.layout_opts.serialized()
 --- a/kitty/mouse.c
 +++ b/kitty/mouse.c
-@@ -692,6 +692,35 @@ closest_window_for_event(unsigned int *window_idx) {
+@@ -660,6 +660,35 @@ closest_window_for_event(unsigned int *window_idx) {
      return ans;
  }
- 
+
 +static void
 +drag_resize_start(double mouse_x, double mouse_y, unsigned int cell_width, unsigned int cell_height) {
 +    call_boss(drag_resize_start, "ddII", mouse_x, mouse_y, cell_width, cell_height);
@@ -135,7 +138,7 @@ Source: https://github.com/kovidgoyal/kitty/discussions/5959#discussioncomment-5
 +    Tab *active_tab = global_state.callback_os_window->tabs + global_state.callback_os_window->active_tab;
 +
 +    for (unsigned int i = 0; i < active_tab->num_windows; ++i) {
-+        WindowGeometry *g = &active_tab->windows[i].geometry;
++        WindowGeometry *g = &active_tab->windows[i].render_data.geometry;
 +        if (g->left <= mouse_x && mouse_x <= g->right && g->top <= mouse_y && mouse_y <= g->bottom) {
 +            return true;
 +        }
@@ -147,7 +150,7 @@ Source: https://github.com/kovidgoyal/kitty/discussions/5959#discussioncomment-5
  void
  focus_in_event(void) {
      // Ensure that no URL is highlighted and the mouse cursor is in default shape
-@@ -832,6 +861,27 @@ mouse_event(const int button, int modifiers, int action) {
+@@ -770,6 +799,27 @@ mouse_event(const int button, int modifiers, int action) {
      bool in_tab_bar;
      unsigned int window_idx = 0;
      Window *w = NULL;
@@ -182,7 +185,7 @@ Source: https://github.com/kovidgoyal/kitty/discussions/5959#discussioncomment-5
      bool check_for_active_animated_images;
      struct { double x, y; } default_dpi;
 -    id_type active_drag_in_window, tracked_drag_in_window, mouse_hover_in_window;
-+    id_type active_drag_in_window, active_drag_resize, tracked_drag_in_window, mouse_hover_in_window;
++    id_type active_drag_in_window, tracked_drag_in_window, mouse_hover_in_window, active_drag_resize;
      int active_drag_button, tracked_drag_button;
      CloseRequest quit_request;
      bool redirect_mouse_handling;

@@ -42,7 +42,6 @@ in
     ];
 
     hardware = {
-      amdgpu.amdvlk.enable = true;
       bluetooth.enable = true;
       cpu.amd.updateMicrocode = true;
       enableAllFirmware = true;
