@@ -1,5 +1,8 @@
 {
   boot = {
+    kernelParams = [ "video=eDP-1:2880x1920@120" ];
+    plymouth.extraConfig = "DeviceScale=1";
+
     loader = {
       efi.canTouchEfiVariables = true;
 
