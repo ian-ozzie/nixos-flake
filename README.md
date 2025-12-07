@@ -141,12 +141,14 @@ done
 
 Used to validate flake, builds all known hosts, or provided list
 
-Inputs: HOSTS, NCPS_URL
-Environment: HOSTS=, NCPS_URL=
+Inputs: INPUT_HOSTS, NCPS_URL
+Environment: INPUT_HOSTS=, NCPS_URL=
 
 ```bash
-if [[ -z "${HOSTS}" ]]; then
-    HOSTS=$(nix flake show --json | jq -r '. | select(.nixosConfigurations != null) | .nixosConfigurations | keys[]')
+if [[ -z "${INPUT_HOSTS}" ]]; then
+    HOSTS=$(nix flake show --json | jq '. | select(.nixosConfigurations != null) | .nixosConfigurations | keys[]')
+else
+    HOSTS=$INPUT_HOSTS
 fi
 
 BUILDS=
@@ -155,13 +157,28 @@ for host in $HOSTS; do
 done
 
 OUTPUTS=$(nix build $BUILDS --json | jq -r '.[].outputs.out')
+if [[ -z $OUTPUTS ]]; then
+    echo "Outputs shouldn't be empty"
+    exit 1
+fi
 
-if [[ -n $OUTPUTS ]] && [[ -n $NCPS_URL ]]; then
+if [[ -n $NCPS_URL ]]; then
     nix copy --to "${NCPS_URL}" $OUTPUTS
 fi
 
-nix build .#isoConfigurations.installer-minimal.config.system.build.toplevel
-nix build .#deprecatedConfigurations.gnome.config.system.build.toplevel
+# Only build these if no hosts provided
+if [[ -z "${INPUT_HOSTS}" ]]; then
+    BUILDS=
+    nix eval .#isoConfigurations --apply __attrNames --json | jq '.[]' | while read -r config; do
+        BUILDS+=".#isoConfigurations.${config}.config.system.build.toplevel "
+    done
+
+    nix eval .#deprecatedConfigurations --apply __attrNames --json | jq '.[]' | while read -r config; do
+        BUILDS+=".#deprecatedConfigurations.${config}.config.system.build.toplevel "
+    done
+
+    nix build --no-link $BUILDS --print-out-paths
+fi
 ```
 
 ### try
