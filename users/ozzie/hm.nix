@@ -42,7 +42,6 @@ in
           feishin
           lrcget
           strawberry
-          supersonic
           youtube-music
 
           kodi
