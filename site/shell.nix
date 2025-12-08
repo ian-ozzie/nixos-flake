@@ -33,6 +33,7 @@ in
       ffmpeg
       file
       git
+      gita
       inetutils
       jq
       lsd

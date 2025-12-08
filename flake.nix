@@ -72,6 +72,17 @@
 
       overlays = [
         (_: prev: {
+          gita = prev.gita.overrideAttrs (_: rec {
+            version = "0.16.8.2";
+
+            src = prev.fetchFromGitHub {
+              owner = "nosarthur";
+              repo = "gita";
+              rev = "v${version}";
+              sha256 = "sha256-JzfGj17YCYXmpGV2jSsGLsG1oqO5ynj7r3u/mkSBRBg=";
+            };
+          });
+
           kitty = prev.kitty.overrideAttrs (oldAttrs: {
             patches = (oldAttrs.patches or [ ]) ++ [
               ./patches/kitty-mouse-resize.patch
