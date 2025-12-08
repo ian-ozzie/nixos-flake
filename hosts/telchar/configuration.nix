@@ -15,11 +15,13 @@
     wayland.windowManager.hyprland.settings = {
       exec-once = [
         "[workspace 1] kitty"
-        "[workspace 2 silent] google-chrome-stable"
+        "[workspace 2 silent] brave"
+        "[workspace 3 silent] google-chrome-stable"
         "[workspace 3 silent] slack"
         "[workspace 8 silent] firefox"
+        "[workspace 8 silent] kitty"
         "[workspace 9 silent] obsidian"
-        "[workspace 10 silent] supersonic"
+        "[workspace 10 silent] feishin"
       ];
 
       monitor = [
