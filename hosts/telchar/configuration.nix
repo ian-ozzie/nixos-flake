@@ -1,6 +1,10 @@
 {
+  pkgs,
+  ...
+}:
+{
   boot = {
-    kernelParams = [ "libata.force=1.00:disable" ]; # Disable dead spinning disk that was part of the fusion drive
+    kernelPackages = with pkgs; linuxPackages_latest;
 
     loader = {
       efi.canTouchEfiVariables = true;
@@ -12,6 +16,12 @@
   };
 
   home-manager.users.ozzie = {
+    ozzie = {
+      workstation = {
+        hyprsunset.enable = false;
+      };
+    };
+
     wayland.windowManager.hyprland.settings = {
       exec-once = [
         "[workspace 1] kitty"
@@ -25,29 +35,28 @@
       ];
 
       monitor = [
-        "eDP-1,2560x1440@60,0x0,1"
-        "DP-2,1920x1200@60,-1200x-240,1,transform,3"
-        "DP-3,1920x1200@60,2560x-240,1,transform,1"
+        "DP-11,1920x1200@60,-1200x-240,1,transform,3"
+        "DP-9,2560x1440@99.95,0x0,1"
+        "DP-1,1920x1200@60,2560x-240,1,transform,1"
       ];
 
       workspace = [
-        "1,monitor:eDP-1"
-        "2,monitor:eDP-1"
-        "3,monitor:eDP-1"
-        "4,monitor:eDP-1"
-        "5,monitor:eDP-1"
-        "6,monitor:eDP-1"
-        "7,monitor:eDP-1"
-        "8,monitor:eDP-1"
-        "9,monitor:DP-2"
-        "10,monitor:DP-3"
+        "1,monitor:DP-9"
+        "2,monitor:DP-9"
+        "3,monitor:DP-9"
+        "4,monitor:DP-9"
+        "5,monitor:DP-9"
+        "6,monitor:DP-9"
+        "7,monitor:DP-9"
+        "8,monitor:DP-9"
+        "9,monitor:DP-11"
+        "10,monitor:DP-1"
       ];
     };
   };
 
   networking = {
     dhcpcd.enable = true;
-    hostId = "5eec05b7";
 
     firewall = {
       allowedTCPPorts = [ ];
@@ -64,8 +73,11 @@
     };
 
     workstation = {
+      printing.enable = true;
+
       theme.wallpaper = {
         height = 1440;
+        svg = ./square.svg;
         width = 2560;
       };
     };
@@ -75,8 +87,9 @@
     environment.work.enable = true;
 
     hardware = {
-      apple-imac-19-1.enable = true;
+      framework-desktop-amd-ai-max-300-series.enable = true;
 
+      fujifilm-apeos-c4570.enable = true;
       keychron-q3.enable = true;
     };
 
@@ -95,8 +108,13 @@
 
     networks."10-lan" = {
       dhcpV4Config.UseDNS = false;
-      name = "enp4s0f0";
+      name = "enp191s0";
       networkConfig.DHCP = "ipv4";
+    };
+
+    wait-online = {
+      ignoredInterfaces = [ "wt0" ];
+      timeout = 10;
     };
   };
 }

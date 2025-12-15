@@ -2,6 +2,7 @@
   imports = [
     ./apple-imac-19-1.nix
     ./framework-13-7040-amd.nix
+    ./framework-desktop-amd-ai-max-300-series.nix
 
     ./amd-ryzen-7-4750g.nix
 

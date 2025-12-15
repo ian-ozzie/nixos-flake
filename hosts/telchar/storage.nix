@@ -29,7 +29,7 @@
 
             swap = {
               name = "swap";
-              size = "8G";
+              size = "64G";
 
               content = {
                 randomEncryption = true;
@@ -47,86 +47,47 @@
                 type = "luks";
 
                 content = {
-                  pool = "rpool";
-                  type = "zfs";
+                  extraArgs = [ "-f" ];
+                  type = "btrfs";
+
+                  subvolumes = {
+                    "/root" = {
+                      mountpoint = "/";
+
+                      mountOptions = [
+                        "compress=zstd"
+                        "noatime"
+                      ];
+                    };
+                    "/home" = {
+                      mountpoint = "/home";
+
+                      mountOptions = [
+                        "compress=zstd"
+                        "noatime"
+                      ];
+                    };
+                    "/nix" = {
+                      mountpoint = "/nix";
+
+                      mountOptions = [
+                        "compress=zstd"
+                        "noatime"
+                      ];
+                    };
+                    "/data" = {
+                      mountpoint = "/data";
+
+                      mountOptions = [
+                        "compress=zstd"
+                        "noatime"
+                      ];
+                    };
+                  };
                 };
               };
             };
           };
-        };
-      };
-    };
-
-    zpool = {
-      rpool = {
-        datasets = {
-          "local" = {
-            options.mountpoint = "none";
-            type = "zfs_fs";
-          };
-
-          "local/root" = {
-            mountpoint = "/";
-            postCreateHook = "zfs snapshot rpool/local/root@blank";
-            type = "zfs_fs";
-
-            options = {
-              canmount = "noauto";
-              mountpoint = "legacy";
-            };
-          };
-
-          "local/nix" = {
-            mountpoint = "/nix";
-            type = "zfs_fs";
-
-            options = {
-              atime = "off";
-              canmount = "noauto";
-              mountpoint = "legacy";
-            };
-          };
-
-          "safe" = {
-            options.mountpoint = "none";
-            type = "zfs_fs";
-          };
-
-          "safe/data" = {
-            mountpoint = "/data";
-            type = "zfs_fs";
-
-            options = {
-              canmount = "noauto";
-              mountpoint = "legacy";
-            };
-          };
-
-          "safe/home" = {
-            mountpoint = "/home";
-            type = "zfs_fs";
-
-            options = {
-              canmount = "noauto";
-              mountpoint = "legacy";
-            };
-          };
-        };
-
-        options = {
-          ashift = "12";
-          autotrim = "on";
-        };
-
-        rootFsOptions = {
-          acltype = "posixacl";
-          canmount = "off";
-          compression = "zstd";
-          dnodesize = "auto";
-          mountpoint = "none";
-          normalization = "formD";
-          relatime = "on";
-          xattr = "sa";
         };
       };
     };

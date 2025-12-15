@@ -20,7 +20,7 @@
     disko.nixosModules.disko
     ./storage.nix
 
-    nixos-hardware.nixosModules.common-cpu-intel
+    nixos-hardware.nixosModules.framework-desktop-amd-ai-max-300-series
 
     ozzie-secrets.nixosModules.site
     ozzie-secrets.nixosModules.hosts.telchar
