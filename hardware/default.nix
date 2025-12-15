@@ -13,5 +13,7 @@
     ./openterface-mini-kvm.nix
     ./wooting-80he.nix
     ./xbox-wireless-adapter.nix
+
+    ./fujifilm-apeos-c4570.nix
   ];
 }
