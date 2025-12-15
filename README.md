@@ -116,13 +116,48 @@ if [ -z "${TARGET_HOST}" ]; then
     TARGET_HOST=$CONFIG
 fi
 
-nixos-rebuild $COMMAND --sudo --ask-sudo-password --target-host $TARGET_HOST --flake .#$CONFIG
+nom build --no-link .#nixosConfigurations.${CONFIG}.config.system.build.toplevel
+
+xc notify "nix: beginning deploy on $TARGET_HOST" "password required"
+if [[ $COMMAND = "noop" ]]; then
+    nixos-rebuild --no-link dry-activate --sudo --ask-sudo-password --target-host $TARGET_HOST --flake .#$CONFIG
+else
+    nixos-rebuild --no-link $COMMAND --sudo --ask-sudo-password --target-host $TARGET_HOST --flake .#$CONFIG
+fi
+
 xc notify "nix: deploy on $TARGET_HOST" "completed $COMMAND"
+```
+
+### deploy-dev
+
+Deploy configuration to remote target, using dev overrides
+
+Only build by default, test/switch/boot with argument
+
+Inputs: CONFIG, COMMAND, TARGET_HOST
+Environment: COMMAND=build, TARGET_HOST=
+
+```bash
+if [ -z "${TARGET_HOST}" ]; then
+    TARGET_HOST=$CONFIG
+fi
+
+ARGS="--no-write-lock-file --option warn-dirty false --override-input ozzie-lab ../lab --override-input ozzie-secrets ../secrets --override-input ozzie-workstation ../workstation"
+nom build --no-link .#nixosConfigurations.${CONFIG}.config.system.build.toplevel $ARGS
+
+xc notify "nix: beginning deploy on $TARGET_HOST" "password required"
+if [[ $COMMAND = "noop" ]]; then
+    nixos-rebuild --no-link dry-activate --sudo --ask-sudo-password --target-host $TARGET_HOST --flake .#$CONFIG $ARGS
+else
+    nixos-rebuild --no-link $COMMAND --sudo --ask-sudo-password --target-host $TARGET_HOST --flake .#$CONFIG $ARGS
+fi
+
+xc notify "nix: deploy-dev on $TARGET_HOST" "completed $COMMAND"
 ```
 
 ### deploy-hosts
 
-Deploys all known hosts, or provided list
+Used by CI to deploy hosts, generate and deploy all configurations, or provided list
 
 Inputs: HOSTS, COMMAND
 Environment: HOSTS=, COMMAND=build, NIX_SSHOPTS=-t
@@ -132,17 +167,17 @@ if [ -z "${HOSTS}" ]; then
     HOSTS=$(ls -1 hosts/)
 fi
 
-for host in $HOSTS; do
-    xc deploy $host $COMMAND
+for HOST in $HOSTS; do
+    nixos-rebuild $COMMAND --sudo --target-host $HOST --flake .#$HOST
 done
 ```
 
 ### test
 
-Used to validate flake, builds all known hosts, or provided list
+Used by CI to validate flake, builds all known hosts, or provided list
 
-Inputs: INPUT_HOSTS, NCPS_URL
-Environment: INPUT_HOSTS=, NCPS_URL=
+Inputs: INPUT_HOSTS
+Environment: INPUT_HOSTS=
 
 ```bash
 if [[ -z "${INPUT_HOSTS}" ]]; then
@@ -169,15 +204,15 @@ fi
 # Only build these if no hosts provided
 if [[ -z "${INPUT_HOSTS}" ]]; then
     BUILDS=
-    nix eval .#isoConfigurations --apply __attrNames --json | jq '.[]' | while read -r config; do
-        BUILDS+=".#isoConfigurations.${config}.config.system.build.toplevel "
+    for iso in $(nix eval .#isoConfigurations --apply __attrNames --json | jq -r '.[]'); do
+        BUILDS+=".#isoConfigurations.${iso}.config.system.build.toplevel "
     done
 
-    nix eval .#deprecatedConfigurations --apply __attrNames --json | jq '.[]' | while read -r config; do
-        BUILDS+=".#deprecatedConfigurations.${config}.config.system.build.toplevel "
+    for deprecated in $(nix eval .#deprecatedConfigurations --apply __attrNames --json | jq -r '.[]'); do
+        BUILDS+=".#deprecatedConfigurations.${deprecated}.config.system.build.toplevel "
     done
 
-    nix build --no-link $BUILDS --print-out-paths
+    nix build --no-link $BUILDS --json | jq -r '.[].outputs.out'
 fi
 ```
 
