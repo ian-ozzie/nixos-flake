@@ -1,6 +1,7 @@
 {
   config,
   lib,
+  pkgs,
   ...
 }:
 let
@@ -12,6 +13,15 @@ in
   };
 
   config = lib.mkIf cfg.enable {
+    powerManagement.cpuFreqGovernor = "powersave";
     site.roles.gui.enable = true;
+
+    environment.systemPackages = with pkgs; [
+      cpupower-gui
+    ];
+
+    services = {
+      cpupower-gui.enable = true;
+    };
   };
 }
