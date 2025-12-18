@@ -51,6 +51,12 @@
     };
 
     workstation = {
+      nvf.languages = {
+        nix.enable = true;
+        php.enable = true;
+        ts.enable = true;
+      };
+
       theme.wallpaper = {
         height = 1440;
         width = 3440;

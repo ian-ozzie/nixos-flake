@@ -75,6 +75,12 @@
     workstation = {
       printing.enable = true;
 
+      nvf.languages = {
+        nix.enable = true;
+        php.enable = true;
+        rust.enable = true;
+      };
+
       theme.wallpaper = {
         height = 1440;
         svg = ./square.svg;

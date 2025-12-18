@@ -62,6 +62,12 @@
         enable = true;
       };
     };
+
+    workstation = {
+      nvf.languages = {
+        nix.enable = true;
+      };
+    };
   };
 
   site = {

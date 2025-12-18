@@ -56,6 +56,12 @@
       unifi.enable = true;
       vaultwarden.enable = true;
     };
+
+    workstation = {
+      nvf.languages = {
+        nix.enable = true;
+      };
+    };
   };
 
   site = {
