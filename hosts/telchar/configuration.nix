@@ -22,6 +22,14 @@
       };
     };
 
+    services = {
+      swaync = {
+        settings = {
+          notification-window-preferred-output = "DP-9";
+        };
+      };
+    };
+
     wayland.windowManager.hyprland.settings = {
       exec-once = [
         "[workspace 1] kitty"
