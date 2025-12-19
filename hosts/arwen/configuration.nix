@@ -52,6 +52,7 @@
       mysql.enable = true;
       mysql.backup.enable = true;
       ncps.enable = true;
+      ntfy-sh.enable = true;
       syncthing.enable = true;
       traefik.enable = true;
       vaultwarden.enable = true;
