@@ -26,6 +26,7 @@ in
     };
 
     programs = {
+      direnv.enable = true;
       ssh.startAgent = true;
 
       nvf = {
