@@ -25,6 +25,7 @@ in
         stateVersion = "24.11";
 
         packages = with pkgs; [
+          notify-client
           pcmanfm
           viewnior
           wl-clipboard
@@ -38,11 +39,12 @@ in
           firefox
 
           discord
+          signal-desktop
 
+          cider-2
           feishin
           lrcget
           strawberry
-          youtube-music
 
           kodi
           mpv
@@ -52,7 +54,7 @@ in
           orca-slicer
           qidi-slicer-bin
 
-          gimp3
+          gimp
           inkscape
           losslesscut-bin
         ];
