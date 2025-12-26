@@ -1,0 +1,22 @@
+name: Deploy flake
+on:
+  workflow_dispatch:
+    inputs:
+      command:
+        description: Command to pass to nixos-rebuild
+        default: "switch"
+        type: choice
+        options:
+          - switch
+          - boot
+      hosts:
+        description: Hosts to deploy to
+        required: true
+        type: string
+jobs:
+  build:
+    runs-on: nix-amd64
+    steps:
+      - uses: actions/checkout@v6
+      - name: Deploy hosts through xc
+        run: xc deploy-hosts "${{ inputs.hosts }}" ${{ inputs.operation }}
