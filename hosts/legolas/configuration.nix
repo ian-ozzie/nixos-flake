@@ -1,5 +1,10 @@
 {
+  pkgs,
+  ...
+}:
+{
   boot = {
+    kernelPackages = with pkgs; linuxPackages_6_18;
     kernelParams = [ "video=eDP-1:2880x1920@120" ];
     plymouth.extraConfig = "DeviceScale=1";
 
