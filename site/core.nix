@@ -47,7 +47,21 @@
 
   ozzie = {
     workstation = {
-      nvf.enable = true;
+      nvf = {
+        enable = true;
+
+        languages = {
+          enable = true;
+        };
+
+        plugins = {
+          git.enable = true;
+          terminal.enable = true;
+          ui.enable = true;
+          utility.enable = true;
+          visuals.enable = true;
+        };
+      };
     };
   };
 
