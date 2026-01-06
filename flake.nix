@@ -49,6 +49,7 @@
 
   outputs =
     inputs@{
+      nixpkgs,
       nvf,
       ozzie-lab,
       ozzie-workstation,
@@ -96,8 +97,28 @@
           });
         })
       ];
+
+      systems = [ "x86_64-linux" ];
     in
     {
+      devShells = nixpkgs.lib.genAttrs systems (
+        system:
+        let
+          inherit (nixpkgs.legacyPackages.${system}) mkShell;
+
+          pkgs = import nixpkgs {
+            inherit system;
+          };
+        in
+        {
+          default = mkShell {
+            packages = with pkgs; [
+              nixd
+            ];
+          };
+        }
+      );
+
       nixosConfigurations = ozzie-lab.lib.genNixOSHosts {
         inherit
           coreHomeModules
