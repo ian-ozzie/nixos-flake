@@ -64,6 +64,7 @@ in
         firefox.enable = true;
         kitty.enable = true;
         librewolf.enable = true;
+        yubikey-touch-detector.enable = true;
       };
 
       programs = {
