@@ -1,4 +1,5 @@
 {
+  lib,
   pkgs,
   ...
 }:
@@ -23,6 +24,13 @@
     };
 
     services = {
+      hypridle.settings.listener = [
+        {
+          on-timeout = "${lib.getExe pkgs.xh} POST http://localhost:10767/api/v1/playback/stop";
+          timeout = 300;
+        }
+      ];
+
       swaync = {
         settings = {
           notification-window-preferred-output = "DP-9";
