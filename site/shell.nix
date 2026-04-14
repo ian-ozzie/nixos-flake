@@ -61,7 +61,7 @@ in
       mtr
       trippy
 
-      nixfmt-rfc-style
+      nixfmt
       pre-commit
     ];
   };

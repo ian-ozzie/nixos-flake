@@ -57,16 +57,16 @@
       ];
 
       workspace = [
-        "1,monitor:DP-9"
-        "2,monitor:DP-9"
-        "3,monitor:DP-9"
-        "4,monitor:DP-9"
-        "5,monitor:DP-9"
-        "6,monitor:DP-9"
-        "7,monitor:DP-9"
-        "8,monitor:DP-9"
-        "9,monitor:DP-11"
-        "10,monitor:DP-1"
+        "1,monitor:DP-9,layoutopt:direction:right"
+        "2,monitor:DP-9,layoutopt:direction:right"
+        "3,monitor:DP-9,layoutopt:direction:right"
+        "4,monitor:DP-9,layoutopt:direction:right"
+        "5,monitor:DP-9,layoutopt:direction:right"
+        "6,monitor:DP-9,layoutopt:direction:right"
+        "7,monitor:DP-9,layoutopt:direction:right"
+        "8,monitor:DP-9,layoutopt:direction:right"
+        "9,monitor:DP-11,layoutopt:direction:down"
+        "10,monitor:DP-1,layoutopt:direction:down"
       ];
     };
   };

@@ -3,7 +3,7 @@
 
   inputs = {
     nixos-hardware.url = "github:nixos/nixos-hardware";
-    nixpkgs.url = "github:nixos/nixpkgs/nixos-25.11";
+    nixpkgs.url = "github:nixos/nixpkgs/nixos-unstable";
 
     disko = {
       inputs.nixpkgs.follows = "nixpkgs";
@@ -12,7 +12,7 @@
 
     home-manager = {
       inputs.nixpkgs.follows = "nixpkgs";
-      url = "github:nix-community/home-manager/release-25.11";
+      url = "github:nix-community/home-manager/master";
     };
 
     nvf = {
@@ -43,7 +43,7 @@
 
     stylix = {
       inputs.nixpkgs.follows = "nixpkgs";
-      url = "github:nix-community/stylix/release-25.11";
+      url = "github:nix-community/stylix/master";
     };
   };
 
@@ -84,16 +84,15 @@
             };
           });
 
-          kitty = prev.kitty.overrideAttrs (oldAttrs: {
-            patches = (oldAttrs.patches or [ ]) ++ [
-              ./patches/kitty-mouse-resize.patch
-            ];
-          });
+          openterface-qt = prev.openterface-qt.overrideAttrs (_: rec {
+            version = "0.5.20";
 
-          xc = prev.xc.overrideAttrs (oldAttrs: {
-            patches = (oldAttrs.patches or [ ]) ++ [
-              ./patches/xc-remove-output-wrapper.patch
-            ];
+            src = prev.fetchFromGitHub {
+              hash = "sha256-yD71UOi6iRd9N3NeASUzqoeHMcTYIqkysAfxRm7GkOA=";
+              owner = "TechxArtisanStudio";
+              repo = "Openterface_QT";
+              rev = version;
+            };
           });
         })
       ];

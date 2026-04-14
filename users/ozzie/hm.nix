@@ -27,7 +27,7 @@ in
         packages = with pkgs; [
           notify-client
           pcmanfm
-          viewnior
+          pinta
           wl-clipboard
 
           bitwarden-desktop
@@ -41,7 +41,7 @@ in
           discord
           signal-desktop
 
-          cider-2
+          deezer-desktop
           feishin
           lrcget
           strawberry
@@ -53,6 +53,8 @@ in
           openscad-unstable
           orca-slicer
           qidi-slicer-bin
+          qidi-studio
+          vscodium-fhs
 
           gimp
           inkscape
@@ -91,7 +93,7 @@ in
             let
               browser = "software.Browsers.desktop";
               explorer = "pcmanfm.desktop";
-              images = "viewnior.desktop";
+              images = "pinta.desktop";
               terminal = "kitty.desktop";
               videos = "mpv.desktop";
             in

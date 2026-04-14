@@ -4,7 +4,6 @@
 }:
 {
   boot = {
-    kernelPackages = with pkgs; linuxPackages_6_18;
     kernelParams = [ "video=eDP-1:2880x1920@120" ];
     plymouth.extraConfig = "DeviceScale=1";
 
@@ -38,9 +37,9 @@
       ];
 
       exec-once = [
-        "brightnessctl set 10"
-        "brightnessctl -d framework_laptop::kbd_backlight set 100"
-        "brightnessctl -d chromeos:white:power set 0"
+        "brightnessctl set 15%"
+        "brightnessctl -d framework_laptop::kbd_backlight set 100%"
+        "brightnessctl -d chromeos:white:power set 0%"
         "[workspace 1] kitty"
         "[workspace 8 silent] firefox"
       ];
