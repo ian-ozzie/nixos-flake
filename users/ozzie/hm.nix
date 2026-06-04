@@ -30,7 +30,7 @@ in
           pinta
           wl-clipboard
 
-          bitwarden-desktop
+          # bitwarden-desktop
           calibre
           obsidian
 
@@ -137,6 +137,7 @@ in
           download = "${home}/downloads";
           music = "${home}/files/music";
           pictures = "${home}/pictures";
+          projects = "${home}/src";
           publicShare = "${home}/files/public";
           templates = "${home}/files/templates";
           videos = "${home}/files/videos";
