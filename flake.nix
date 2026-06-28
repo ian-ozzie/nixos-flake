@@ -10,6 +10,11 @@
       url = "github:nix-community/disko";
     };
 
+    git-hooks = {
+      inputs.nixpkgs.follows = "nixpkgs";
+      url = "github:cachix/git-hooks.nix";
+    };
+
     home-manager = {
       inputs.nixpkgs.follows = "nixpkgs";
       url = "github:nix-community/home-manager/release-26.05";
@@ -21,14 +26,19 @@
     };
 
     ozzie-lab = {
-      inputs.nixpkgs.follows = "nixpkgs";
       url = "git+ssh://git/ozzie/nixos-lab.git";
+
+      inputs = {
+        git-hooks.follows = "git-hooks";
+        nixpkgs.follows = "nixpkgs";
+      };
     };
 
     ozzie-workstation = {
       url = "git+ssh://git/ozzie/nix-workstation.git";
 
       inputs = {
+        git-hooks.follows = "git-hooks";
         home-manager.follows = "home-manager";
         nixpkgs.follows = "nixpkgs";
         nvf.follows = "nvf";
@@ -37,8 +47,12 @@
     };
 
     ozzie-secrets = {
-      inputs.nixpkgs.follows = "nixpkgs";
       url = "git+ssh://git/ozzie/nixos-secrets.git";
+
+      inputs = {
+        git-hooks.follows = "git-hooks";
+        nixpkgs.follows = "nixpkgs";
+      };
     };
 
     stylix = {
@@ -49,6 +63,7 @@
 
   outputs =
     inputs@{
+      git-hooks,
       nixpkgs,
       nvf,
       ozzie-lab,
@@ -108,11 +123,32 @@
           pkgs = import nixpkgs {
             inherit system;
           };
+
+          gitHooks = git-hooks.lib.${system}.run {
+            src = ./.;
+
+            hooks = {
+              deadnix.enable = true;
+              nixfmt.enable = true;
+
+              check-flake = {
+                enable = true;
+                entry = "nix flake check";
+                pass_filenames = false;
+                types = [ "nix" ];
+              };
+            };
+          };
         in
         {
           default = mkShell {
+            inherit (gitHooks) shellHook;
+
+            buildInputs = gitHooks.enabledPackages;
+
             packages = with pkgs; [
               nixd
+              xc
             ];
           };
         }
